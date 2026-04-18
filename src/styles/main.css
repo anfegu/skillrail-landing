@@ -1,0 +1,446 @@
+/* SkillRail Landing Page - Enterprise Brand System */
+
+:root {
+  /* ============================================
+     COLOR PALETTE - Precision Through Restraint
+     ============================================ */
+  
+  /* Primary: Deep Navy - Foundation, Trust, Enterprise */
+  --color-navy: #0F172A;
+  --color-navy-light: #1E293B;
+  
+  /* Accent: Indigo - Protocol Logic, Smart Contracts, Determinism */
+  --color-indigo: #6366F1;
+  --color-indigo-dark: #4F46E5;
+  --color-indigo-light: #818CF8;
+  
+  /* Secondary: Emerald - Settlement, Success, Finality */
+  --color-emerald: #10B981;
+  --color-emerald-dark: #059669;
+  --color-emerald-light: #34D399;
+  
+  /* Tertiary: Amber - Caution, Pending, In-Progress */
+  --color-amber: #F59E0B;
+  --color-amber-dark: #D97706;
+  --color-amber-light: #FBBF24;
+  
+  /* Neutral: Slate - Hierarchy, Organization, Depth */
+  --color-slate-900: #1F2937;
+  --color-slate-700: #374151;
+  --color-slate-600: #4B5563;
+  --color-slate-500: #6B7280;
+  --color-slate-400: #9CA3AF;
+  --color-slate-300: #D1D5DB;
+  --color-slate-200: #E5E7EB;
+  --color-slate-100: #F3F4F6;
+  
+  /* Semantic Colors */
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #4B5563;
+  --color-text-tertiary: #9CA3AF;
+  --color-text-inverse: #F3F4F6;
+  
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F3F4F6;
+  --color-bg-tertiary: #1F2937;
+  
+  --color-border: #E5E7EB;
+  --color-border-dark: #D1D5DB;
+  
+  /* Legacy colors for backward compatibility */
+  --primary: #6366F1;
+  --secondary: #10B981;
+  --accent: #6366F1;
+  --dark-bg: #FFFFFF;
+  --dark-card: #F3F4F6;
+  --dark-border: #E5E7EB;
+  --text-primary: #0F172A;
+  --text-secondary: #4B5563;
+  
+  /* ============================================
+     TYPOGRAPHY - Dual Voice System
+     ============================================ */
+  
+  /* Font Families */
+  --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-mono: 'Monaco', 'Courier New', monospace;
+  
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Heading Styles - Protocol Voice (Tight, Precise, Technical) */
+  --font-size-h1: 3.5rem;
+  --font-size-h2: 2.5rem;
+  --font-size-h3: 1.5rem;
+  --font-size-h4: 1.125rem;
+  
+  --line-height-heading: 1.1;
+  --letter-spacing-heading: -0.02em;
+  
+  /* Body Text - Human Voice (Readable, Warm, Trustworthy) */
+  --font-size-body: 1rem;
+  --font-size-body-sm: 0.9375rem;
+  --font-size-body-xs: 0.875rem;
+  
+  --line-height-body: 1.6;
+  --letter-spacing-body: 0;
+  
+  /* Label/Metadata - Protocol Voice (Spaced, Technical, Uppercase) */
+  --font-size-label: 0.875rem;
+  --font-size-label-sm: 0.75rem;
+  
+  --line-height-label: 1.4;
+  --letter-spacing-label: 0.05em;
+  
+  /* ============================================
+     SPACING - 8px Grid System
+     ============================================ */
+  
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  
+  /* Section Padding */
+  --section-padding-vertical-desktop: 4rem;
+  --section-padding-vertical-tablet: 3rem;
+  --section-padding-vertical-mobile: 2rem;
+  
+  --section-padding-horizontal: 1.5rem;
+  --section-padding-horizontal-mobile: 1rem;
+  
+  /* Card Padding */
+  --card-padding: 2rem;
+  --card-gap: 2rem;
+  
+  /* Container */
+  --container-max-width: 80rem;
+  
+  /* ============================================
+     TRANSITIONS & ANIMATIONS
+     ============================================ */
+  
+  /* Timing */
+  --transition-fast: 150ms ease-out;
+  --transition-medium: 300ms ease-out;
+  --transition-slow: 600ms ease-out;
+  
+  --transition-fast-in: 150ms ease-in;
+  --transition-medium-in: 300ms ease-in;
+  --transition-slow-in: 600ms ease-in;
+  
+  /* ============================================
+     SHADOWS - Subtle, Not Dramatic
+     ============================================ */
+  
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+  
+  /* Indigo-tinted shadows (for interactive elements) */
+  --shadow-indigo-sm: 0 4px 12px rgba(99, 102, 241, 0.15);
+  --shadow-indigo-md: 0 10px 30px rgba(99, 102, 241, 0.2);
+  --shadow-indigo-lg: 0 20px 40px rgba(99, 102, 241, 0.25);
+  
+  /* ============================================
+     BORDER RADIUS - Subtle, Professional
+     ============================================ */
+  
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  
+  /* ============================================
+     Z-INDEX SCALE - Layering
+     ============================================ */
+  
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-tooltip: 600;
+  
+  /* ============================================
+     BREAKPOINTS - Responsive Design
+     ============================================ */
+  
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 3.75rem;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.875rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--secondary);
+}
+
+/* Container */
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Sections */
+section {
+  padding: 4rem 0;
+}
+
+section.hero {
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  padding: 6rem 0;
+  text-align: center;
+}
+
+section.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #ffffff 0%, #d8b4fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+section.hero p {
+  font-size: 1.5rem;
+  max-width: 42rem;
+  margin: 0 auto 2rem;
+  color: #d1d5db;
+}
+
+section.problem {
+  background-color: var(--dark-bg);
+}
+
+section.solution {
+  background-color: var(--dark-card);
+}
+
+section.features {
+  background-color: var(--dark-bg);
+}
+
+section.cta {
+  background: linear-gradient(135deg, var(--primary) 0%, #7e22ce 100%);
+  text-align: center;
+  padding: 4rem 0;
+}
+
+section.cta h2 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+section.cta p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+/* Cards */
+.card {
+  background-color: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 20px rgba(153, 69, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.card h3 {
+  color: var(--secondary);
+  margin-bottom: 1rem;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid-5 {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #7e22ce;
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: white;
+  border: 2px solid var(--primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* Footer */
+footer {
+  background-color: #030712;
+  border-top: 1px solid var(--dark-border);
+  padding: 3rem 0;
+  margin-top: 4rem;
+}
+
+footer h3 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+footer a {
+  color: var(--text-secondary);
+}
+
+footer a:hover {
+  color: var(--secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  section {
+    padding: 2rem 0;
+  }
+
+  section.hero {
+    padding: 3rem 0;
+  }
+
+  .grid-2, .grid-3, .grid-5 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,167 @@
+---
+/**
+ * Solution Section - Enterprise-Grade Redesign
+ * 
+ * DESIGN PHILOSOPHY: "Trustless Settlement Flow"
+ * - Three-column layout with numbered cards
+ * - Indigo borders (solution, not problem)
+ * - Numbers + connecting lines = visual flow
+ * - Emerald accents = settlement/finality
+ */
+
+const solutionHeadline = "Reliable Transactions, Powered by Solana";
+const solutionDescription = "SkillRail is a Solana-native settlement protocol that standardizes the delayed work lifecycle: funding, fulfillment, result submission, and settlement.";
+const benefits = [
+  { title: "Trustless Settlement", description: "On-chain rules ensure fair outcomes for both parties." },
+  { title: "Programmable Workflows", description: "Automate complex work arrangements with smart contracts." },
+  { title: "Agent-Ready", description: "Built for emerging AI and application-driven workflows." },
+];
+---
+
+<section class="sr-solution">
+  <div class="container">
+    <h2 class="sr-solution__headline">
+      {solutionHeadline}
+    </h2>
+    <p class="sr-solution__description">
+      {solutionDescription}
+    </p>
+    
+    <div class="sr-solution__grid">
+      {benefits.map((benefit, index) => (
+        <div class="sr-solution__card">
+          <div class="sr-solution__number">{index + 1}</div>
+          <h3 class="sr-solution__card-title">{benefit.title}</h3>
+          <p class="sr-solution__card-text">{benefit.description}</p>
+          {index < benefits.length - 1 && <div class="sr-solution__connector"></div>}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .sr-solution {
+    padding: var(--section-padding-vertical-desktop) var(--section-padding-horizontal);
+    background-color: var(--color-bg-primary);
+  }
+  
+  .sr-solution__headline {
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-heading);
+    letter-spacing: var(--letter-spacing-heading);
+    color: var(--color-navy);
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .sr-solution__description {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-body);
+    color: var(--color-text-secondary);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--space-3xl);
+  }
+  
+  .sr-solution__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--card-gap);
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .sr-solution__card {
+    position: relative;
+    padding: var(--card-padding);
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-indigo);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+  }
+  
+  .sr-solution__card:hover {
+    border-color: var(--color-indigo);
+    box-shadow: var(--shadow-indigo-md);
+    transform: translateY(-2px);
+  }
+  
+  .sr-solution__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--color-indigo);
+    color: white;
+    border-radius: 50%;
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-mono);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .sr-solution__card-title {
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-heading);
+    letter-spacing: var(--letter-spacing-heading);
+    color: var(--color-navy);
+    margin-bottom: var(--space-md);
+  }
+  
+  .sr-solution__card-text {
+    font-size: var(--font-size-body-sm);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-body);
+    color: var(--color-text-secondary);
+  }
+  
+  .sr-solution__connector {
+    position: absolute;
+    top: 50%;
+    right: -1rem;
+    width: 2rem;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-indigo) 0%, transparent 100%);
+    transform: translateY(-50%);
+  }
+  
+  @media (max-width: 768px) {
+    .sr-solution {
+      padding: var(--section-padding-vertical-tablet) var(--section-padding-horizontal-mobile);
+    }
+    
+    .sr-solution__headline {
+      font-size: 1.875rem;
+      margin-bottom: var(--space-md);
+    }
+    
+    .sr-solution__description {
+      font-size: 1rem;
+      margin-bottom: var(--space-2xl);
+    }
+    
+    .sr-solution__grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .sr-solution__connector {
+      display: none;
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .sr-solution__card {
+      transition: none;
+    }
+    
+    .sr-solution__card:hover {
+      transform: none;
+    }
+  }
+</style>

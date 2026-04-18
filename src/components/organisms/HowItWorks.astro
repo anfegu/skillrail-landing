@@ -1,0 +1,198 @@
+---
+/**
+ * How It Works Section - Enterprise-Grade Redesign
+ * 
+ * DESIGN PHILOSOPHY: "Deterministic Settlement Pipeline"
+ * - Horizontal flow (Define → Fund → Fulfill → Submit → Settle)
+ * - Cards connected by arrows (→)
+ * - Monospace labels (DEFINE, FUND, etc.)
+ * - Step number in circle (Indigo background)
+ */
+
+const steps = [
+  { number: 1, title: "Define", description: "Requester specifies work requirements and payment amount." },
+  { number: 2, title: "Fund", description: "Payment is locked in an on-chain escrow contract." },
+  { number: 3, title: "Fulfill", description: "Provider completes the work off-chain." },
+  { number: 4, title: "Submit", description: "Provider submits proof of work completion." },
+  { number: 5, title: "Settle", description: "Smart contract releases payment or refund based on rules." },
+];
+
+const labels = ["DEFINE", "FUND", "FULFILL", "SUBMIT", "SETTLE"];
+---
+
+<section class="sr-how-it-works">
+  <div class="container">
+    <h2 class="sr-how-it-works__headline">How It Works</h2>
+    <p class="sr-how-it-works__description">
+      A simple, transparent flow for funding and settling asynchronous work.
+    </p>
+    
+    <div class="sr-how-it-works__grid">
+      {steps.map((step, index) => (
+        <>
+          <div class="sr-how-it-works__step">
+            <div class="sr-how-it-works__label">{labels[index]}</div>
+            <div class="sr-how-it-works__number">{step.number}</div>
+            <h3 class="sr-how-it-works__title">{step.title}</h3>
+            <p class="sr-how-it-works__text">{step.description}</p>
+          </div>
+          {index < steps.length - 1 && <div class="sr-how-it-works__arrow">→</div>}
+        </>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .sr-how-it-works {
+    padding: var(--section-padding-vertical-desktop) var(--section-padding-horizontal);
+    background-color: var(--color-bg-secondary);
+  }
+  
+  .sr-how-it-works__headline {
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-heading);
+    letter-spacing: var(--letter-spacing-heading);
+    color: var(--color-navy);
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .sr-how-it-works__description {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-body);
+    color: var(--color-text-secondary);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--space-3xl);
+  }
+  
+  .sr-how-it-works__grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .sr-how-it-works__step {
+    flex: 0 1 180px;
+    padding: var(--card-padding);
+    background-color: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    text-align: center;
+    transition: all var(--transition-fast);
+  }
+  
+  .sr-how-it-works__step:hover {
+    border-color: var(--color-indigo);
+    box-shadow: var(--shadow-indigo-md);
+    transform: translateY(-2px);
+  }
+  
+  .sr-how-it-works__label {
+    font-size: var(--font-size-label-sm);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-label);
+    color: var(--color-indigo);
+    text-transform: uppercase;
+    margin-bottom: var(--space-md);
+  }
+  
+  .sr-how-it-works__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--color-indigo);
+    color: white;
+    border-radius: 50%;
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-mono);
+    margin-bottom: var(--space-md);
+  }
+  
+  .sr-how-it-works__title {
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-heading);
+    letter-spacing: var(--letter-spacing-heading);
+    color: var(--color-navy);
+    margin-bottom: var(--space-md);
+  }
+  
+  .sr-how-it-works__text {
+    font-size: var(--font-size-body-xs);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-body);
+    color: var(--color-text-secondary);
+  }
+  
+  .sr-how-it-works__arrow {
+    font-size: 1.5rem;
+    color: var(--color-indigo);
+    font-weight: var(--font-weight-bold);
+    flex: 0 0 auto;
+  }
+  
+  @media (max-width: 1024px) {
+    .sr-how-it-works__grid {
+      gap: var(--space-sm);
+    }
+    
+    .sr-how-it-works__step {
+      flex: 0 1 160px;
+    }
+    
+    .sr-how-it-works__arrow {
+      font-size: 1.25rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .sr-how-it-works {
+      padding: var(--section-padding-vertical-tablet) var(--section-padding-horizontal-mobile);
+    }
+    
+    .sr-how-it-works__headline {
+      font-size: 1.875rem;
+      margin-bottom: var(--space-md);
+    }
+    
+    .sr-how-it-works__description {
+      font-size: 1rem;
+      margin-bottom: var(--space-2xl);
+    }
+    
+    .sr-how-it-works__grid {
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    
+    .sr-how-it-works__step {
+      flex: 1 1 100%;
+      width: 100%;
+    }
+    
+    .sr-how-it-works__arrow {
+      transform: rotate(90deg);
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .sr-how-it-works__step {
+      transition: none;
+    }
+    
+    .sr-how-it-works__step:hover {
+      transform: none;
+    }
+  }
+</style>

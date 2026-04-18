@@ -1,0 +1,156 @@
+---
+/**
+ * Features Section - Enterprise-Grade Redesign
+ * 
+ * DESIGN PHILOSOPHY: "Protocol Capabilities Matrix"
+ * - 3x2 grid (6 features)
+ * - Monospace labels (SOLANA-NATIVE, PROGRAMMABLE, etc.)
+ * - Emerald left border (benefits/capabilities)
+ * - Subtle gradient background (interconnected)
+ */
+
+const features = [
+  { title: "Solana-Native", description: "Built on Solana for speed, cost-efficiency, and scalability." },
+  { title: "Programmable", description: "Define custom settlement rules and conditions." },
+  { title: "Trustless", description: "No intermediaries—cryptography ensures fairness." },
+  { title: "Agent-Ready", description: "Perfect for AI agents and autonomous applications." },
+  { title: "Async-by-Design", description: "Optimized for work that doesn't require immediate delivery." },
+  { title: "Minimal Overhead", description: "Low fees and fast settlement times." },
+];
+
+const labels = [
+  "SOLANA-NATIVE",
+  "PROGRAMMABLE",
+  "TRUSTLESS",
+  "AGENT-READY",
+  "ASYNC-BY-DESIGN",
+  "MINIMAL-OVERHEAD",
+];
+---
+
+<section class="sr-features">
+  <div class="container">
+    <h2 class="sr-features__headline">Why SkillRail</h2>
+    <p class="sr-features__description">
+      Six reasons SkillRail is the protocol for outsourced asynchronous work.
+    </p>
+    
+    <div class="sr-features__grid">
+      {features.map((feature, index) => (
+        <div class="sr-features__card">
+          <div class="sr-features__label">{labels[index]}</div>
+          <h3 class="sr-features__card-title">{feature.title}</h3>
+          <p class="sr-features__card-text">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .sr-features {
+    padding: var(--section-padding-vertical-desktop) var(--section-padding-horizontal);
+    background-color: var(--color-bg-primary);
+  }
+  
+  .sr-features__headline {
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-heading);
+    letter-spacing: var(--letter-spacing-heading);
+    color: var(--color-navy);
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .sr-features__description {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-body);
+    color: var(--color-text-secondary);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--space-3xl);
+  }
+  
+  .sr-features__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--card-gap);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .sr-features__card {
+    position: relative;
+    padding: var(--card-padding);
+    padding-left: calc(var(--card-padding) + 0.5rem);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.02) 0%, rgba(16, 185, 129, 0.02) 100%);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-emerald);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+  }
+  
+  .sr-features__card:hover {
+    border-color: var(--color-indigo);
+    border-left-color: var(--color-emerald);
+    box-shadow: var(--shadow-indigo-md);
+    transform: translateY(-2px);
+  }
+  
+  .sr-features__label {
+    font-size: var(--font-size-label-sm);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-label);
+    color: var(--color-indigo);
+    text-transform: uppercase;
+    margin-bottom: var(--space-md);
+  }
+  
+  .sr-features__card-title {
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-heading);
+    letter-spacing: var(--letter-spacing-heading);
+    color: var(--color-navy);
+    margin-bottom: var(--space-md);
+  }
+  
+  .sr-features__card-text {
+    font-size: var(--font-size-body-sm);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-body);
+    color: var(--color-text-secondary);
+  }
+  
+  @media (max-width: 768px) {
+    .sr-features {
+      padding: var(--section-padding-vertical-tablet) var(--section-padding-horizontal-mobile);
+    }
+    
+    .sr-features__headline {
+      font-size: 1.875rem;
+      margin-bottom: var(--space-md);
+    }
+    
+    .sr-features__description {
+      font-size: 1rem;
+      margin-bottom: var(--space-2xl);
+    }
+    
+    .sr-features__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .sr-features__card {
+      transition: none;
+    }
+    
+    .sr-features__card:hover {
+      transform: none;
+    }
+  }
+</style>

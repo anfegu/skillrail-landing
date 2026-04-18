@@ -1,0 +1,146 @@
+---
+/**
+ * Footer - Enterprise-Grade Redesign
+ * 
+ * DESIGN PHILOSOPHY: "Structured Navigation"
+ * - Navy background (foundation)
+ * - Three-column layout (Resources, Community, Legal)
+ * - Monospace labels (RESOURCES, COMMUNITY, LEGAL)
+ * - Subtle borders (structure, organization)
+ */
+---
+
+<footer class="sr-footer">
+  <div class="container">
+    <div class="sr-footer__grid">
+      <div class="sr-footer__column">
+        <div class="sr-footer__label">ABOUT</div>
+        <h3 class="sr-footer__title">SkillRail</h3>
+        <p class="sr-footer__text">Solana-native settlement protocol for outsourced asynchronous work.</p>
+      </div>
+      
+      <div class="sr-footer__column">
+        <div class="sr-footer__label">RESOURCES</div>
+        <ul class="sr-footer__list">
+          <li><a href="#" class="sr-footer__link">Documentation</a></li>
+          <li><a href="#" class="sr-footer__link">GitHub</a></li>
+          <li><a href="#" class="sr-footer__link">API Reference</a></li>
+        </ul>
+      </div>
+      
+      <div class="sr-footer__column">
+        <div class="sr-footer__label">COMMUNITY</div>
+        <ul class="sr-footer__list">
+          <li><a href="#" class="sr-footer__link">Discord</a></li>
+          <li><a href="#" class="sr-footer__link">Twitter</a></li>
+          <li><a href="#" class="sr-footer__link">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="sr-footer__divider"></div>
+    
+    <div class="sr-footer__bottom">
+      <p class="sr-footer__copyright">&copy; 2026 SkillRail. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .sr-footer {
+    padding: var(--section-padding-vertical-desktop) var(--section-padding-horizontal);
+    background-color: var(--color-navy);
+  }
+  
+  .sr-footer__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-3xl);
+    margin-bottom: var(--space-2xl);
+  }
+  
+  .sr-footer__column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sr-footer__label {
+    font-size: var(--font-size-label-sm);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-label);
+    color: var(--color-indigo);
+    text-transform: uppercase;
+    margin-bottom: var(--space-md);
+  }
+  
+  .sr-footer__title {
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-heading);
+    letter-spacing: var(--letter-spacing-heading);
+    color: white;
+    margin-bottom: var(--space-md);
+  }
+  
+  .sr-footer__text {
+    font-size: var(--font-size-body-sm);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-body);
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .sr-footer__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .sr-footer__link {
+    font-size: var(--font-size-body-sm);
+    font-weight: var(--font-weight-regular);
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  .sr-footer__link:hover {
+    color: var(--color-indigo);
+  }
+  
+  .sr-footer__link:focus-visible {
+    outline: 2px solid var(--color-indigo);
+    outline-offset: 2px;
+  }
+  
+  .sr-footer__divider {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-bottom: var(--space-2xl);
+  }
+  
+  .sr-footer__bottom {
+    text-align: center;
+  }
+  
+  .sr-footer__copyright {
+    font-size: var(--font-size-body-xs);
+    font-weight: var(--font-weight-regular);
+    color: rgba(255, 255, 255, 0.5);
+  }
+  
+  @media (max-width: 768px) {
+    .sr-footer {
+      padding: var(--section-padding-vertical-tablet) var(--section-padding-horizontal-mobile);
+    }
+    
+    .sr-footer__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+    }
+    
+    .sr-footer__divider {
+      margin-bottom: var(--space-xl);
+    }
+  }
+</style>

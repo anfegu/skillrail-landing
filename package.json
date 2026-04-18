@@ -1,0 +1,14 @@
+{
+  "name": "skillrail-landing",
+  "version": "1.0.0",
+  "description": "SkillRail: Solana-native settlement protocol for outsourced asynchronous work",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "latest"
+  }
+}
