@@ -1,0 +1,156 @@
+---
+/**
+ * Exploration Section - Creative Under Construction
+ * 
+ * DESIGN PHILOSOPHY: "The Future in Motion"
+ * - Playful but technical message
+ * - Suggests high-dimensional activity
+ */
+---
+
+<section id="explore" class="sr-explore">
+  <div class="container">
+    <div class="sr-explore__content">
+      <div class="sr-explore__icon">🏗️</div>
+      <h2 class="sr-explore__headline">Protocol Exploration Laboratory</h2>
+      <div class="sr-explore__terminal">
+        <div class="sr-explore__terminal-header">
+          <span class="sr-explore__dot sr-explore__dot--red"></span>
+          <span class="sr-explore__dot sr-explore__dot--yellow"></span>
+          <span class="sr-explore__dot sr-explore__dot--green"></span>
+          <span class="sr-explore__terminal-title">skillrail-discovery --mode=beta</span>
+        </div>
+        <div class="sr-explore__terminal-body">
+          <p class="sr-explore__text">> status: <span class="sr-explore__highlight">ARCHITECTING_THE_FUTURE</span></p>
+          <p class="sr-explore__text">> loading: [■■■■■■■■□□] 82%</p>
+          <p class="sr-explore__text">> message: Our interactive protocol visualizer is currently being calibrated in a high-dimensional sandbox. We're optimizing the cryptographic optics to ensure total transparency.</p>
+          <p class="sr-explore__text">> estimate: Ready when the blocks align perfectly.</p>
+          <div class="sr-explore__cursor"></div>
+        </div>
+      </div>
+      <p class="sr-explore__footer">
+        While we calibrate, please refer to the <a href="#docs">technical documentation</a> to explore the protocol's mathematical foundation.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sr-explore {
+    padding: var(--section-padding-vertical-desktop) var(--section-padding-horizontal);
+    background-color: var(--color-bg-secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .sr-explore__content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .sr-explore__icon {
+    font-size: 4rem;
+    margin-bottom: var(--space-xl);
+  }
+
+  .sr-explore__headline {
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-navy);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .sr-explore__terminal {
+    background-color: #1a1b26;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    text-align: left;
+    overflow: hidden;
+    margin-bottom: var(--space-xl);
+    border: 1px solid var(--color-slate-700);
+  }
+
+  .sr-explore__terminal-header {
+    background-color: #24283b;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .sr-explore__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .sr-explore__dot--red { background-color: #f7768e; }
+  .sr-explore__dot--yellow { background-color: #e0af68; }
+  .sr-explore__dot--green { background-color: #9ece6a; }
+
+  .sr-explore__terminal-title {
+    margin-left: auto;
+    font-family: var(--font-family-mono);
+    font-size: 0.75rem;
+    color: #565f89;
+    letter-spacing: 0.05em;
+  }
+
+  .sr-explore__terminal-body {
+    padding: 1.5rem;
+    font-family: var(--font-family-mono);
+    color: #a9b1d6;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .sr-explore__text {
+    margin-bottom: 0.5rem;
+  }
+
+  .sr-explore__highlight {
+    color: var(--color-indigo-light);
+    font-weight: bold;
+  }
+
+  .sr-explore__cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.2rem;
+    background-color: var(--color-indigo-light);
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+  }
+
+  .sr-explore__footer {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+  }
+
+  .sr-explore__footer a {
+    color: var(--color-indigo);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: underline;
+  }
+
+  @keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  @media (max-width: 768px) {
+    .sr-explore {
+      padding: var(--section-padding-vertical-tablet) var(--section-padding-horizontal-mobile);
+    }
+    
+    .sr-explore__headline {
+      font-size: 1.75rem;
+    }
+
+    .sr-explore__terminal-body {
+      font-size: 0.8125rem;
+    }
+  }
+</style>

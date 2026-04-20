@@ -1,147 +1,162 @@
 ---
 /**
- * Call To Action Section - Enterprise-Grade Redesign
+ * Call To Action Section - Professional Design Refinement
  * 
- * DESIGN PHILOSOPHY: "Confident Conversion"
- * - Indigo gradient background (protocol authority)
- * - White text (high contrast, readable)
- * - Primary + Secondary buttons (clear hierarchy)
- * - Generous padding (breathing room)
+ * IMPROVES THE ORIGINAL DESIGN:
+ * - Keeps exact original text and structure.
+ * - Enhances visual depth with a sophisticated indigo gradient system.
+ * - Refines typography hierarchy and button fidelity.
  */
 ---
 
-<section class="sr-cta">
-  <div class="container">
-    <h2 class="sr-cta__headline">Ready to Transform Async Work?</h2>
-    <p class="sr-cta__description">Join the SkillRail protocol and start settling outsourced work with confidence.</p>
-    
-    <div class="sr-cta__buttons">
-      <a href="#" class="sr-cta__btn sr-cta__btn--primary">Get Started</a>
-      <a href="#" class="sr-cta__btn sr-cta__btn--secondary">Read Docs</a>
+<section id="join" class="sr-cta">
+  <div class="sr-cta__visual-base"></div>
+  
+  <div class="container relative-z">
+    <div class="sr-cta__content">
+      <h2 class="sr-cta__headline">Ready to Transform Async Work?</h2>
+      <p class="sr-cta__description">
+        Join the SkillRail protocol and start settling outsourced work with confidence.
+      </p>
+      
+      <div class="sr-cta__buttons">
+        <a href="/explore" class="sr-cta__btn sr-cta__btn--primary">
+          <span>Explore Protocol</span>
+          <div class="btn-hover-effect"></div>
+        </a>
+        <a href="/docs" class="sr-cta__btn sr-cta__btn--secondary">
+          Technical Specs
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
   .sr-cta {
-    padding: var(--section-padding-vertical-desktop) var(--section-padding-horizontal);
-    background: linear-gradient(135deg, var(--color-indigo) 0%, var(--color-indigo-dark) 100%);
+    position: relative;
+    padding: 10rem 0;
+    background-color: #4F46E5; /* Brand Indigo Base */
+    background: linear-gradient(135deg, #4F46E5 0%, #312E81 100%);
     text-align: center;
+    overflow: hidden;
   }
-  
+
+  /* Subtle innovative background texture */
+  .sr-cta__visual-base {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.3;
+  }
+
+  .sr-cta::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle at center, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .relative-z {
+    position: relative;
+    z-index: 10;
+  }
+
+  .sr-cta__content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
   .sr-cta__headline {
-    font-size: var(--font-size-h2);
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-heading);
-    letter-spacing: var(--letter-spacing-heading);
+    font-size: 4rem;
+    font-weight: 800;
     color: white;
-    margin-bottom: var(--space-lg);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
-  
+
   .sr-cta__description {
-    font-size: 1.125rem;
-    font-weight: var(--font-weight-regular);
-    line-height: var(--line-height-body);
-    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
     max-width: 600px;
-    margin: 0 auto var(--space-2xl);
+    margin: 0 auto 4rem;
   }
-  
+
   .sr-cta__buttons {
     display: flex;
-    gap: var(--space-lg);
+    gap: 1.5rem;
     justify-content: center;
     flex-wrap: wrap;
   }
-  
-  /* CTA Button Styles */
+
   .sr-cta__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 2rem;
-    border-radius: var(--radius-md);
-    font-size: var(--font-size-body-sm);
-    font-weight: var(--font-weight-semibold);
+    padding: 1.25rem 3rem;
+    border-radius: 100px;
+    font-size: 1.1rem;
+    font-weight: 700;
     text-decoration: none;
-    cursor: pointer;
-    border: none;
-    transition: all var(--transition-fast);
-    outline: 2px solid transparent;
-    outline-offset: 2px;
+    transition: all 200ms ease-out;
+    position: relative;
+    overflow: hidden;
   }
-  
-  .sr-cta__btn:focus-visible {
-    outline-color: white;
-  }
-  
-  /* Primary Button - White background, Indigo text */
+
   .sr-cta__btn--primary {
     background-color: white;
-    color: var(--color-indigo);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: #4F46E5;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   }
-  
+
   .sr-cta__btn--primary:hover {
-    background-color: var(--color-slate-100);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    background-color: #F8FAFC;
   }
-  
-  .sr-cta__btn--primary:active {
-    transform: translateY(0);
-  }
-  
-  /* Secondary Button - Transparent, White border */
+
   .sr-cta__btn--secondary {
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.1);
     color: white;
-    border: 2px solid white;
-    box-shadow: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
   }
-  
+
   .sr-cta__btn--secondary:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: white;
+    transform: translateY(-3px);
   }
-  
-  .sr-cta__btn--secondary:active {
-    transform: translateY(0);
-  }
-  
+
   @media (max-width: 768px) {
     .sr-cta {
-      padding: var(--section-padding-vertical-tablet) var(--section-padding-horizontal-mobile);
+      padding: 6rem 0;
     }
     
     .sr-cta__headline {
-      font-size: 1.875rem;
-      margin-bottom: var(--space-md);
-    }
-    
-    .sr-cta__description {
-      font-size: 1rem;
-      margin-bottom: var(--space-xl);
+      font-size: 2.5rem;
     }
     
     .sr-cta__buttons {
       flex-direction: column;
-      gap: var(--space-md);
+      align-items: center;
     }
     
     .sr-cta__btn {
       width: 100%;
-    }
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .sr-cta__btn {
-      transition: none;
-    }
-    
-    .sr-cta__btn:hover {
-      transform: none;
+      max-width: 300px;
     }
   }
 </style>

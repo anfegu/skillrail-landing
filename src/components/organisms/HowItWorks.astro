@@ -1,42 +1,111 @@
 ---
 /**
- * How It Works Section - Enterprise-Grade Redesign
+ * How It Works Section - Futuristic Pipeline Design
  * 
- * DESIGN PHILOSOPHY: "Deterministic Settlement Pipeline"
- * - Horizontal flow (Define → Fund → Fulfill → Submit → Settle)
- * - Cards connected by arrows (→)
- * - Monospace labels (DEFINE, FUND, etc.)
- * - Step number in circle (Indigo background)
+ * DESIGN PHILOSOPHY: "The Deterministic Pipeline"
+ * - Dark, technical aesthetic with neon accents
+ * - Animated flow indicators between steps
+ * - Glassmorphic step cards with holographic effects
+ * - Interactive hover states with status indicators
  */
 
 const steps = [
-  { number: 1, title: "Define", description: "Requester specifies work requirements and payment amount." },
-  { number: 2, title: "Fund", description: "Payment is locked in an on-chain escrow contract." },
-  { number: 3, title: "Fulfill", description: "Provider completes the work off-chain." },
-  { number: 4, title: "Submit", description: "Provider submits proof of work completion." },
-  { number: 5, title: "Settle", description: "Smart contract releases payment or refund based on rules." },
+  { 
+    number: "01", 
+    title: "Define", 
+    description: "Specify work requirements, technical specs, and deterministic payment criteria.",
+    icon: "📝",
+    tag: "INITIALIZATION"
+  },
+  { 
+    number: "02", 
+    title: "Fund", 
+    description: "Assets are locked in a Solana-native escrow contract. 100% trustless security.",
+    icon: "🔒",
+    tag: "ESCROW_LOCKED"
+  },
+  { 
+    number: "03", 
+    title: "Execute", 
+    description: "Provider fulfills work off-chain, adhering to the programmed requirements.",
+    icon: "⚡",
+    tag: "PROCESSING"
+  },
+  { 
+    number: "04", 
+    title: "Verify", 
+    description: "Proof of work is submitted and validated against the protocol rules.",
+    icon: "🔍",
+    tag: "VALIDATION"
+  },
+  { 
+    number: "05", 
+    title: "Settle", 
+    description: "Instant on-chain settlement. Payment released or assets returned.",
+    icon: "💎",
+    tag: "SETTLEMENT"
+  },
 ];
-
-const labels = ["DEFINE", "FUND", "FULFILL", "SUBMIT", "SETTLE"];
 ---
 
-<section class="sr-how-it-works">
+<section id="how-it-works" class="sr-how-it-works">
+  <!-- Technical Background -->
+  <div class="sr-how-it-works__bg">
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+  </div>
+
   <div class="container">
-    <h2 class="sr-how-it-works__headline">How It Works</h2>
-    <p class="sr-how-it-works__description">
-      A simple, transparent flow for funding and settling asynchronous work.
-    </p>
+    <div class="sr-how-it-works__header">
+      <div class="section-badge">
+        <span class="badge-dot"></span>
+        <span class="badge-text">PROTOCOL WORKFLOW</span>
+      </div>
+      <h2 class="sr-how-it-works__headline">The Pipeline</h2>
+      <p class="sr-how-it-works__description">
+        A deterministic, trustless flow that transforms manual work into a programmable transaction stream.
+      </p>
+    </div>
     
-    <div class="sr-how-it-works__grid">
+    <div class="sr-how-it-works__pipeline">
       {steps.map((step, index) => (
         <>
-          <div class="sr-how-it-works__step">
-            <div class="sr-how-it-works__label">{labels[index]}</div>
-            <div class="sr-how-it-works__number">{step.number}</div>
-            <h3 class="sr-how-it-works__title">{step.title}</h3>
-            <p class="sr-how-it-works__text">{step.description}</p>
+          <div class="pipeline-step">
+            <div class="step-card">
+              <div class="card-glow"></div>
+              
+              <div class="step-header">
+                <span class="step-number">{step.number}</span>
+                <span class="step-tag">{step.tag}</span>
+              </div>
+              
+              <div class="step-icon">
+                <span class="icon-symbol">{step.icon}</span>
+                <div class="icon-ring"></div>
+              </div>
+              
+              <h3 class="step-title">{step.title}</h3>
+              <p class="step-text">{step.description}</p>
+              
+              <div class="step-status">
+                <div class="status-dot"></div>
+                <span>Protocol Ready</span>
+              </div>
+            </div>
           </div>
-          {index < steps.length - 1 && <div class="sr-how-it-works__arrow">→</div>}
+          
+          {index < steps.length - 1 && (
+            <div class="pipeline-connector">
+              <div class="connector-line">
+                <div class="line-pulse"></div>
+              </div>
+              <div class="connector-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          )}
         </>
       ))}
     </div>
@@ -44,155 +113,344 @@ const labels = ["DEFINE", "FUND", "FULFILL", "SUBMIT", "SETTLE"];
 </section>
 
 <style>
+  /* ============================================
+     HOW IT WORKS - Futuristic Redesign
+     ============================================ */
+  
   .sr-how-it-works {
-    padding: var(--section-padding-vertical-desktop) var(--section-padding-horizontal);
-    background-color: var(--color-bg-secondary);
+    position: relative;
+    padding: 6rem 0; /* Compacted from 10rem */
+    background: #0F172A;
+    overflow: hidden;
+  }
+  
+  .sr-how-it-works__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+  
+  .bg-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
+  }
+  
+  .bg-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(79, 70, 229, 0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  
+  /* ============================================
+     HEADER STYLING
+     ============================================ */
+  
+  .sr-how-it-works__header {
+    text-align: center;
+    margin-bottom: 4rem; /* Compacted from 6rem */
+    position: relative;
+    z-index: 10;
+  }
+  
+  .section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.4rem 1rem; /* Compacted */
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 100px;
+    margin-bottom: 1.5rem; /* Compacted */
+  }
+  
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    background: #6366F1;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #6366F1;
+    animation: pulse 2s infinite;
+  }
+  
+  .badge-text {
+    color: #818CF8;
+    font-size: 0.7rem; /* Compacted */
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
   }
   
   .sr-how-it-works__headline {
-    font-size: var(--font-size-h2);
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-heading);
-    letter-spacing: var(--letter-spacing-heading);
-    color: var(--color-navy);
-    text-align: center;
-    margin-bottom: var(--space-lg);
+    font-size: 3rem; /* Compacted from 4rem */
+    font-weight: 900;
+    color: white;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
   }
   
   .sr-how-it-works__description {
-    font-size: 1.125rem;
-    font-weight: var(--font-weight-regular);
-    line-height: var(--line-height-body);
-    color: var(--color-text-secondary);
-    text-align: center;
+    font-size: 1.125rem; /* Compacted */
+    color: #94A3B8;
     max-width: 600px;
-    margin: 0 auto var(--space-3xl);
+    margin: 0 auto;
+    line-height: 1.6;
   }
   
-  .sr-how-it-works__grid {
+  /* ============================================
+     PIPELINE SYSTEM
+     ============================================ */
+  
+  .sr-how-it-works__pipeline {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Force same height */
+    gap: 0;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .pipeline-step {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    height: auto;
+  }
+  
+  .step-card {
+    position: relative;
+    background: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 1.5rem; /* Compacted from 2rem */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+    width: 100%;
+    min-width: 180px;
+    transform: translateY(0); /* Explicitly reset state */
+  }
+  
+  .step-card:hover {
+    transform: translateY(-8px);
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  .card-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 24px;
+    z-index: -1;
+  }
+  
+  .step-card:hover .card-glow {
+    opacity: 1;
+  }
+  
+  .step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem; /* Compacted */
+  }
+  
+  .step-number {
+    font-family: var(--font-family-mono);
+    font-size: 0.75rem; /* Compacted */
+    font-weight: 700;
+    color: #6366F1;
+  }
+  
+  .step-tag {
+    font-family: var(--font-family-mono);
+    font-size: 0.6rem; /* Compacted */
+    padding: 0.2rem 0.4rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: #94A3B8;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+  }
+  
+  .step-icon {
+    position: relative;
+    width: 40px; /* Compacted from 48px */
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-md);
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
+    margin-bottom: 1.25rem;
   }
   
-  .sr-how-it-works__step {
-    flex: 0 1 180px;
-    padding: var(--card-padding);
-    background-color: var(--color-bg-primary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    text-align: center;
-    transition: all var(--transition-fast);
+  .icon-symbol {
+    font-size: 1.25rem; /* Compacted */
+    z-index: 2;
   }
   
-  .sr-how-it-works__step:hover {
-    border-color: var(--color-indigo);
-    box-shadow: var(--shadow-indigo-md);
-    transform: translateY(-2px);
+  .icon-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid rgba(99, 102, 241, 0.2);
+    border-radius: 50%;
+    animation: rotate 10s linear infinite;
   }
   
-  .sr-how-it-works__label {
-    font-size: var(--font-size-label-sm);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--letter-spacing-label);
-    color: var(--color-indigo);
+  .step-title {
+    font-size: 1.15rem; /* Compacted */
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+  
+  .step-text {
+    font-size: 0.85rem; /* Compacted */
+    color: #94A3B8;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+  }
+  
+  .step-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-family-mono);
+    font-size: 0.6rem;
+    color: #10B981;
+    font-weight: 600;
     text-transform: uppercase;
-    margin-bottom: var(--space-md);
+    letter-spacing: 0.05em;
   }
   
-  .sr-how-it-works__number {
-    display: inline-flex;
+  .status-dot {
+    width: 4px;
+    height: 4px;
+    background: #10B981;
+    border-radius: 50%;
+    animation: blink 1s infinite;
+  }
+  
+  /* ============================================
+     CONNECTORS
+     ============================================ */
+  
+  .pipeline-connector {
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    background-color: var(--color-indigo);
-    color: white;
-    border-radius: 50%;
-    font-size: 1.25rem;
-    font-weight: var(--font-weight-bold);
-    font-family: var(--font-family-mono);
-    margin-bottom: var(--space-md);
+    width: 30px; /* Compacted from 40px */
+    flex-shrink: 0;
+    position: relative;
   }
   
-  .sr-how-it-works__title {
-    font-size: var(--font-size-h4);
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-heading);
-    letter-spacing: var(--letter-spacing-heading);
-    color: var(--color-navy);
-    margin-bottom: var(--space-md);
+  .connector-line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(99, 102, 241, 0.5), rgba(16, 185, 129, 0.5));
+    position: relative;
+    overflow: hidden;
   }
   
-  .sr-how-it-works__text {
-    font-size: var(--font-size-body-xs);
-    font-weight: var(--font-weight-regular);
-    line-height: var(--line-height-body);
-    color: var(--color-text-secondary);
+  .line-pulse {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, white, transparent);
+    animation: flowPulse 2s linear infinite;
   }
   
-  .sr-how-it-works__arrow {
-    font-size: 1.5rem;
-    color: var(--color-indigo);
-    font-weight: var(--font-weight-bold);
-    flex: 0 0 auto;
+  .connector-arrow {
+    position: absolute;
+    right: -8px;
+    color: #10B981;
+    animation: arrowBounce 2s ease-in-out infinite;
   }
   
-  @media (max-width: 1024px) {
-    .sr-how-it-works__grid {
-      gap: var(--space-sm);
+  /* ============================================
+     ANIMATIONS
+     ============================================ */
+  
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+  }
+  
+  @keyframes flowPulse {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+  
+  @keyframes arrowBounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+  }
+  
+  /* ============================================
+     RESPONSIVE
+     ============================================ */
+  
+  @media (max-width: 1200px) {
+    .sr-how-it-works__pipeline {
+      flex-wrap: wrap;
+      gap: 1.5rem;
     }
     
-    .sr-how-it-works__step {
-      flex: 0 1 160px;
+    .pipeline-step {
+      flex: 1 1 280px;
     }
     
-    .sr-how-it-works__arrow {
-      font-size: 1.25rem;
+    .pipeline-connector {
+      display: none;
     }
   }
   
   @media (max-width: 768px) {
     .sr-how-it-works {
-      padding: var(--section-padding-vertical-tablet) var(--section-padding-horizontal-mobile);
+      padding: 4rem 0;
     }
     
     .sr-how-it-works__headline {
-      font-size: 1.875rem;
-      margin-bottom: var(--space-md);
+      font-size: 2.5rem;
     }
     
-    .sr-how-it-works__description {
-      font-size: 1rem;
-      margin-bottom: var(--space-2xl);
-    }
-    
-    .sr-how-it-works__grid {
-      flex-direction: column;
-      gap: var(--space-lg);
-    }
-    
-    .sr-how-it-works__step {
+    .pipeline-step {
       flex: 1 1 100%;
-      width: 100%;
-    }
-    
-    .sr-how-it-works__arrow {
-      transform: rotate(90deg);
-    }
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .sr-how-it-works__step {
-      transition: none;
-    }
-    
-    .sr-how-it-works__step:hover {
-      transform: none;
     }
   }
 </style>

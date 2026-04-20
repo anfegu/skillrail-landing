@@ -10,10 +10,15 @@ import Footer from "../components/organisms/Footer.astro";
 
 const pageTitle = "SkillRail: Solana-Native Settlement Protocol for Async Work";
 const pageDescription = "SkillRail is a Solana-native protocol for funding, fulfilling, and settling outsourced asynchronous work. It transforms delayed digital work into a programmable transaction flow.";
+const pageKeywords = "Solana, Web3, Smart Contracts, Async Work, Settlement Protocol, Blockchain, DeFi, Trustless, Programmable Transactions, Digital Work";
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
-  <main>
+<Layout 
+  title={pageTitle} 
+  description={pageDescription}
+  keywords={pageKeywords}
+>
+  <main id="main-content" role="main">
     <Hero />
     <Problem />
     <Solution />

@@ -1,0 +1,532 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/organisms/Footer.astro";
+
+const pageTitle = "The SkillRail Bible | Technical Specifications";
+const pageDescription = "Definitive technical documentation for the SkillRail work settlement protocol on Solana. Architecture, State Machine, Account Layouts, and SDK specifications.";
+
+const chapters = [
+  {
+    id: "architecture",
+    title: "1. Core Architecture",
+    sections: [
+      {
+        h: "Design Philosophy",
+        p: "SkillRail is an institutional-grade settlement standard designed to eliminate the 'Trust Tax' in labor markets. It uses a Clean Architecture pattern, isolating pure business rules (Domain) from platform-specific infrastructure."
+      },
+      {
+        h: "Key Principles",
+        list: [
+          "Deterministic Finality: On-chain state transitions govern the entire job lifecycle.",
+          "Universal Agnosticism: Behavioral parity across Docker, Mac, and Linux environments.",
+          "Non-Custodial Security: PDAs act as sovereign vaults, ensuring assets are protected by cryptographic logic."
+        ]
+      }
+    ]
+  },
+  {
+    id: "state-machine",
+    title: "2. The Work State Machine",
+    sections: [
+      {
+        h: "Lifecycle Transitions",
+        p: "The protocol enforces a strict directional flow to ensure contract compliance.",
+        table: [
+          ["Source State", "Target State", "Authorized Actor", "Outcome"],
+          ["None", "Created", "Requester", "Terms defined on-chain"],
+          ["Created", "Funded", "Requester", "Assets locked in vault"],
+          ["Funded", "Submitted", "Provider", "Result metadata reference stored"],
+          ["Submitted", "Completed", "Requester", "Atomically settled & paid"],
+          ["Funded", "Refunded", "Requester", "Recovery after deadline expiry"]
+        ]
+      }
+    ]
+  },
+  {
+    id: "accounts",
+    title: "3. Account Memory Layout",
+    sections: [
+      {
+        h: "ProviderProfile (253 Bytes)",
+        p: "Stores technical identity and reputation markers.",
+        table: [
+          ["Field", "Type", "Bytes", "Description"],
+          ["authority", "Pubkey", "32", "The provider's wallet"],
+          ["metadata_uri", "String", "204", "Identity payload (Max 200 chars)"],
+          ["created_at", "i64", "8", "Timestamp"],
+          ["bump", "u8", "1", "PDA derivation bump"]
+        ]
+      },
+      {
+        h: "Job (547 Bytes)",
+        p: "The authoritative record of a work settlement contract.",
+        table: [
+          ["Field", "Type", "Bytes", "Description"],
+          ["requester", "Pubkey", "32", "Funding party"],
+          ["provider", "Pubkey", "32", "Executing party"],
+          ["mint", "Pubkey", "32", "Settlement asset (e.g. USDC)"],
+          ["amount", "u64", "8", "Escrow volume"],
+          ["status", "Enum", "1", "Current machine state"],
+          ["deadline_at", "i64", "8", "Expiry timestamp"],
+          ["terms_uri", "String", "204", "Agreement reference"],
+          ["result_uri", "String", "204", "Delivery reference"]
+        ]
+      }
+    ]
+  },
+  {
+    id: "instructions",
+    title: "4. Instruction Specification",
+    sections: [
+      {
+        h: "register_provider",
+        p: "Initializes a provider profile. Precondition: metadata_uri <= 200 chars."
+      },
+      {
+        h: "create_job",
+        p: "Initializes a Job PDA. Requires: valid assigned provider profile, amount > 0, and future deadline."
+      },
+      {
+        h: "fund_job",
+        p: "Escrows assets from Requester to Job Vault. Atomic CPI transfer ensures status only moves to 'Funded' on success."
+      },
+      {
+        h: "submit_result",
+        p: "Provider commits work. Valid only if Funded and before deadline."
+      },
+      {
+        h: "accept_result",
+        p: "Requester finalizes the job. Triggers atomic payout from Vault to Provider."
+      },
+      {
+        h: "refund_job",
+        p: "Recovery path. Valid only if Funded and Clock > deadline_at."
+      }
+    ]
+  },
+  {
+    id: "sdk",
+    title: "5. SDK & Integration Layer",
+    sections: [
+      {
+        h: "SkillRailClient",
+        p: "The high-level entry point for all frontends and services. Encapsulates RPC complexity, PDA derivation, and transaction building."
+      },
+      {
+        h: "Domain Entities",
+        p: "Rich objects like 'JobEntity' provide off-chain utility methods (isFunded, canRequesterRefund) ensuring business logic remains consistent."
+      }
+    ]
+  },
+  {
+    id: "network",
+    title: "6. Multi-Network Strategy",
+    sections: [
+      {
+        h: "Transition Matrix",
+        table: [
+          ["Cluster", "RPC Endpoint", "Official USDC Mint"],
+          ["Localhost", "http://localhost:8899", "Dynamic (via setup)"],
+          ["Devnet", "https://api.devnet.solana.com", "4zMMC9srt5Ri5TQJEUveajzQXWvDvcNth7S4V9BXXm6N"],
+          ["Mainnet", "https://api.mainnet-beta.solana.com", "EPjFW36vS7ox6re7FLUvHA7L6z5HKu39wjLzerjhcLhH"]
+        ]
+      }
+    ]
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <nav class="sr-bible-nav">
+    <div class="container">
+      <div class="sr-bible-nav__left">
+        <a href="/" class="sr-bible-nav__logo">SkillRail</a>
+        <span class="sr-bible-nav__divider">/</span>
+        <span class="sr-bible-nav__current">PROTOCOL_BIBLE</span>
+      </div>
+      <a href="/" class="sr-bible-nav__back">← Back to Portal</a>
+    </div>
+  </nav>
+
+  <div class="sr-bible-layout">
+    <aside class="sr-bible-sidebar">
+      <nav class="sr-bible-toc">
+        <div class="sr-bible-toc__label">DOC_STRUCTURE</div>
+        <ul class="sr-bible-toc__list">
+          {chapters.map(chapter => (
+            <li><a href={`#${chapter.id}`} class="sr-bible-toc__link">{chapter.title}</a></li>
+          ))}
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="sr-bible-content">
+      <div class="sr-bible-hero">
+        <h1 class="sr-bible-hero__title">Institutional Settlement Specification</h1>
+        <p class="sr-bible-hero__description">
+          The definitive technical standard for the SkillRail work settlement protocol. This document is the source of truth for the system's architecture and logic.
+        </p>
+      </div>
+
+      {chapters.map((chapter) => (
+        <section id={chapter.id} class="sr-bible-chapter">
+          <h2 class="sr-bible-chapter__title">{chapter.title}</h2>
+          <div class="sr-bible-chapter__body">
+            {chapter.sections.map((section) => (
+              <div class="sr-bible-section">
+                <h3 class="sr-bible-section__heading">{section.h}</h3>
+                {section.p && <p class="sr-bible-section__text">{section.p}</p>}
+                
+                {section.list && (
+                  <ul class="sr-bible-section__list">
+                    {section.list.map(item => (
+                      <li class="sr-bible-section__list-item">{item}</li>
+                    ))}
+                  </ul>
+                )}
+
+                {section.steps && (
+                  <div class="sr-bible-section__steps">
+                    {section.steps.map((step, idx) => (
+                      <div class="step-card">
+                        <span class="step-number">{idx + 1}</span>
+                        <span class="step-text">{step}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {section.table && (
+                  <div class="sr-bible-section__table-wrapper">
+                    <table class="sr-bible-section__table">
+                      <thead>
+                        <tr>
+                          {section.table[0].map(cell => <th>{cell}</th>)}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {section.table.slice(1).map(row => (
+                          <tr>
+                            {row.map(cell => <td>{cell}</td>)}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </main>
+  </div>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ============================================
+     BIBLE PAGE - Technical, High-Assurance Look
+     ============================================ */
+
+  .sr-bible-nav {
+    padding: 1.25rem 0;
+    background-color: var(--color-navy);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .sr-bible-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sr-bible-nav__left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .sr-bible-nav__logo {
+    font-weight: 900;
+    color: white;
+    font-size: 1.125rem;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .sr-bible-nav__divider {
+    color: rgba(255, 255, 255, 0.2);
+    font-family: var(--font-family-mono);
+  }
+
+  .sr-bible-nav__current {
+    font-family: var(--font-family-mono);
+    color: var(--color-indigo-light);
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+  }
+
+  .sr-bible-nav__back {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: var(--font-family-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .sr-bible-nav__back:hover {
+    color: white;
+  }
+
+  .sr-bible-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* ============================================
+     SIDEBAR NAVIGATION
+     ============================================ */
+
+  .sr-bible-sidebar {
+    background-color: #f8fafc;
+    border-right: 1px solid var(--color-border);
+    height: calc(100vh - 64px);
+    position: sticky;
+    top: 64px;
+    padding: 3rem 2rem;
+    overflow-y: auto;
+  }
+
+  .sr-bible-toc__label {
+    font-family: var(--font-family-mono);
+    font-size: 0.7rem;
+    color: var(--color-slate-400);
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+  }
+
+  .sr-bible-toc__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .sr-bible-toc__link {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-slate-600);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .sr-bible-toc__link:hover {
+    color: var(--color-indigo);
+    transform: translateX(4px);
+  }
+
+  /* ============================================
+     CONTENT AREA
+     ============================================ */
+
+  .sr-bible-content {
+    padding: 4rem 6rem;
+    background-color: white;
+  }
+
+  .sr-bible-hero {
+    margin-bottom: 6rem;
+    border-bottom: 2px solid var(--color-navy);
+    padding-bottom: 3rem;
+  }
+
+  .sr-bible-hero__title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--color-navy);
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    line-height: 1;
+  }
+
+  .sr-bible-hero__description {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    max-width: 800px;
+    line-height: 1.6;
+  }
+
+  .sr-bible-chapter {
+    margin-bottom: 6rem;
+    scroll-margin-top: 100px;
+  }
+
+  .sr-bible-chapter__title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--color-navy);
+    margin-bottom: 3rem;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .sr-bible-chapter__title::after {
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--color-border);
+  }
+
+  .sr-bible-section {
+    margin-bottom: 4rem;
+  }
+
+  .sr-bible-section__heading {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin-bottom: 1.25rem;
+    font-family: var(--font-family-mono);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .sr-bible-section__heading::before {
+    content: ">>";
+    color: var(--color-indigo);
+  }
+
+  .sr-bible-section__text {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .sr-bible-section__list {
+    list-style: none;
+    padding-left: 1.5rem;
+  }
+
+  .sr-bible-section__list-item {
+    position: relative;
+    padding-bottom: 0.75rem;
+    color: var(--color-text-secondary);
+    font-size: 1.0625rem;
+  }
+
+  .sr-bible-section__list-item::before {
+    content: "•";
+    position: absolute;
+    left: -1.5rem;
+    color: var(--color-indigo);
+    font-weight: bold;
+  }
+
+  /* Steps Styling */
+  .sr-bible-section__steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .step-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.25rem 2rem;
+    background-color: #f8fafc;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+  }
+
+  .step-number {
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--color-navy);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: 900;
+    font-family: var(--font-family-mono);
+    flex-shrink: 0;
+  }
+
+  .step-text {
+    font-weight: 600;
+    color: var(--color-navy);
+  }
+
+  /* Table Styling */
+  .sr-bible-section__table-wrapper {
+    overflow-x: auto;
+    margin: 2rem 0;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .sr-bible-section__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+    text-align: left;
+  }
+
+  .sr-bible-section__table th {
+    background: var(--color-navy);
+    padding: 1.25rem 1.5rem;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+  }
+
+  .sr-bible-section__table td {
+    padding: 1.25rem 1.5rem;
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .sr-bible-section__table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .sr-bible-section__table tr:hover td {
+    background-color: #f8fafc;
+  }
+
+  @media (max-width: 1024px) {
+    .sr-bible-layout {
+      grid-template-columns: 1fr;
+    }
+    
+    .sr-bible-sidebar {
+      display: none;
+    }
+
+    .sr-bible-content {
+      padding: 4rem 2rem;
+    }
+    
+    .sr-bible-hero__title {
+      font-size: 2.5rem;
+    }
+  }
+</style>

@@ -1,146 +1,170 @@
 ---
 /**
- * Footer - Enterprise-Grade Redesign
+ * Footer - Compact & Persistent Design
  * 
- * DESIGN PHILOSOPHY: "Structured Navigation"
- * - Navy background (foundation)
- * - Three-column layout (Resources, Community, Legal)
- * - Monospace labels (RESOURCES, COMMUNITY, LEGAL)
- * - Subtle borders (structure, organization)
+ * DESIGN PHILOSOPHY: "The Operational Bar"
+ * - Compact horizontal layout to reduce vertical footprint.
+ * - Sticky behavior or high-integration with the CTA.
+ * - Technical monospace typography for a protocol feel.
+ * - Eliminates all whitespace gaps.
  */
 ---
 
-<footer class="sr-footer">
+<footer class="sr-footer-compact">
   <div class="container">
-    <div class="sr-footer__grid">
-      <div class="sr-footer__column">
-        <div class="sr-footer__label">ABOUT</div>
-        <h3 class="sr-footer__title">SkillRail</h3>
-        <p class="sr-footer__text">Solana-native settlement protocol for outsourced asynchronous work.</p>
+    <div class="footer-content">
+      <!-- Brand & Copyright -->
+      <div class="footer-brand">
+        <span class="brand-logo">SR</span>
+        <span class="brand-copy">&copy; 2026 SkillRail Protocol.</span>
       </div>
-      
-      <div class="sr-footer__column">
-        <div class="sr-footer__label">RESOURCES</div>
-        <ul class="sr-footer__list">
-          <li><a href="#" class="sr-footer__link">Documentation</a></li>
-          <li><a href="#" class="sr-footer__link">GitHub</a></li>
-          <li><a href="#" class="sr-footer__link">API Reference</a></li>
+
+      <!-- Compact Navigation -->
+      <nav class="footer-nav">
+        <ul class="footer-links">
+          <li><a href="/docs" class="f-link">DOCS</a></li>
+          <li><a href="https://github.com" class="f-link">GITHUB</a></li>
+          <li><a href="#" class="f-link">DISCORD</a></li>
+          <li><a href="#" class="f-link">TWITTER</a></li>
         </ul>
+      </nav>
+
+      <!-- Status Indicator (Innovative touch) -->
+      <div class="footer-status">
+        <span class="status-label">SYS_STATUS:</span>
+        <span class="status-value">OPERATIONAL</span>
+        <div class="status-pulse"></div>
       </div>
-      
-      <div class="sr-footer__column">
-        <div class="sr-footer__label">COMMUNITY</div>
-        <ul class="sr-footer__list">
-          <li><a href="#" class="sr-footer__link">Discord</a></li>
-          <li><a href="#" class="sr-footer__link">Twitter</a></li>
-          <li><a href="#" class="sr-footer__link">Email</a></li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="sr-footer__divider"></div>
-    
-    <div class="sr-footer__bottom">
-      <p class="sr-footer__copyright">&copy; 2026 SkillRail. All rights reserved.</p>
     </div>
   </div>
 </footer>
 
 <style>
-  .sr-footer {
-    padding: var(--section-padding-vertical-desktop) var(--section-padding-horizontal);
-    background-color: var(--color-navy);
+  .sr-footer-compact {
+    position: sticky;
+    bottom: 0;
+    background-color: #020617; /* Matches the deepest part of the CTA */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1.25rem 0; /* Extremely compact */
+    margin-top: -1px;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
   }
-  
-  .sr-footer__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--space-3xl);
-    margin-bottom: var(--space-2xl);
-  }
-  
-  .sr-footer__column {
+
+  .footer-content {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
   }
-  
-  .sr-footer__label {
-    font-size: var(--font-size-label-sm);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--letter-spacing-label);
-    color: var(--color-indigo);
-    text-transform: uppercase;
-    margin-bottom: var(--space-md);
+
+  /* ============================================
+     BRAND
+     ============================================ */
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
-  
-  .sr-footer__title {
-    font-size: var(--font-size-h4);
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-heading);
-    letter-spacing: var(--letter-spacing-heading);
+
+  .brand-logo {
+    font-family: var(--font-family-mono);
+    font-size: 0.7rem;
+    font-weight: 800;
+    background: #6366F1;
     color: white;
-    margin-bottom: var(--space-md);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
   }
-  
-  .sr-footer__text {
-    font-size: var(--font-size-body-sm);
-    font-weight: var(--font-weight-regular);
-    line-height: var(--line-height-body);
-    color: rgba(255, 255, 255, 0.7);
+
+  .brand-copy {
+    font-size: 0.75rem;
+    color: #475569;
+    font-weight: 500;
   }
-  
-  .sr-footer__list {
+
+  /* ============================================
+     NAVIGATION
+     ============================================ */
+
+  .footer-links {
     list-style: none;
     display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
   }
-  
-  .sr-footer__link {
-    font-size: var(--font-size-body-sm);
-    font-weight: var(--font-weight-regular);
-    color: rgba(255, 255, 255, 0.7);
+
+  .f-link {
+    font-family: var(--font-family-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #94A3B8;
     text-decoration: none;
-    transition: color var(--transition-fast);
+    letter-spacing: 0.1em;
+    transition: color 0.2s ease;
   }
-  
-  .sr-footer__link:hover {
-    color: var(--color-indigo);
+
+  .f-link:hover {
+    color: #6366F1;
   }
-  
-  .sr-footer__link:focus-visible {
-    outline: 2px solid var(--color-indigo);
-    outline-offset: 2px;
+
+  /* ============================================
+     STATUS
+     ============================================ */
+
+  .footer-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
-  
-  .sr-footer__divider {
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.1);
-    margin-bottom: var(--space-2xl);
+
+  .status-label {
+    font-family: var(--font-family-mono);
+    font-size: 0.6rem;
+    color: #334155;
+    font-weight: 800;
   }
-  
-  .sr-footer__bottom {
-    text-align: center;
+
+  .status-value {
+    font-family: var(--font-family-mono);
+    font-size: 0.65rem;
+    color: #10B981;
+    font-weight: 700;
   }
-  
-  .sr-footer__copyright {
-    font-size: var(--font-size-body-xs);
-    font-weight: var(--font-weight-regular);
-    color: rgba(255, 255, 255, 0.5);
+
+  .status-pulse {
+    width: 6px;
+    height: 6px;
+    background: #10B981;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #10B981;
+    animation: pulse 2s infinite;
   }
-  
+
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  /* Responsive */
   @media (max-width: 768px) {
-    .sr-footer {
-      padding: var(--section-padding-vertical-tablet) var(--section-padding-horizontal-mobile);
+    .footer-content {
+      flex-direction: column;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .footer-links {
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
     }
     
-    .sr-footer__grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-2xl);
-    }
-    
-    .sr-footer__divider {
-      margin-bottom: var(--space-xl);
+    .footer-status {
+      order: -1;
     }
   }
 </style>

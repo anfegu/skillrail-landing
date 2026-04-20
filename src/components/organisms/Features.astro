@@ -1,46 +1,98 @@
 ---
 /**
- * Features Section - Enterprise-Grade Redesign
+ * Features Section - Holographic Blueprints
  * 
- * DESIGN PHILOSOPHY: "Protocol Capabilities Matrix"
- * - 3x2 grid (6 features)
- * - Monospace labels (SOLANA-NATIVE, PROGRAMMABLE, etc.)
- * - Emerald left border (benefits/capabilities)
- * - Subtle gradient background (interconnected)
+ * DESIGN PHILOSOPHY: "Protocol Precision"
+ * - Replaces emojis with abstract technical SVG line-art
+ * - Blueprint-style grid backgrounds for each card
+ * - Monospace technical labels and architectural stats
+ * - Deep navy and emerald precision accents
  */
 
 const features = [
-  { title: "Solana-Native", description: "Built on Solana for speed, cost-efficiency, and scalability." },
-  { title: "Programmable", description: "Define custom settlement rules and conditions." },
-  { title: "Trustless", description: "No intermediaries—cryptography ensures fairness." },
-  { title: "Agent-Ready", description: "Perfect for AI agents and autonomous applications." },
-  { title: "Async-by-Design", description: "Optimized for work that doesn't require immediate delivery." },
-  { title: "Minimal Overhead", description: "Low fees and fast settlement times." },
-];
-
-const labels = [
-  "SOLANA-NATIVE",
-  "PROGRAMMABLE",
-  "TRUSTLESS",
-  "AGENT-READY",
-  "ASYNC-BY-DESIGN",
-  "MINIMAL-OVERHEAD",
+  { 
+    title: "Solana-Native", 
+    description: "Architected for extreme scale. Direct integration with the Solana VM for unparalleled settlement speed.",
+    stat: "65K TPS",
+    label: "L1_EXECUTION",
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10h16M4 14h16M4 6h16M4 18h16M7 6v12m10-12v12"/></svg>`
+  },
+  { 
+    title: "Programmable", 
+    description: "Sophisticated conditional logic. Work only settles when deterministic criteria are met on-chain.",
+    stat: "DETERMINISTIC",
+    label: "SMART_CONTRACT",
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>`
+  },
+  { 
+    title: "Trustless", 
+    description: "Eliminate counterparty risk. Assets are held by verified programs, not human intermediaries.",
+    stat: "AUDITED_CODE",
+    label: "ZERO_TRUST",
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>`
+  },
+  { 
+    title: "Agent-Ready", 
+    description: "Machine-to-machine economy. Native support for AI agents to participate in complex work cycles.",
+    stat: "JSON_RPC_READY",
+    label: "AI_OPTIMIZED",
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8V4H8M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2zM9 16v-4m3 4V10m3 6v-2"/></svg>`
+  },
+  { 
+    title: "Async-by-Design", 
+    description: "Built for the realities of outsourced work. Native support for delayed delivery and review periods.",
+    stat: "EVENT_DRIVEN",
+    label: "ARCH_ASYNC",
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`
+  },
+  { 
+    title: "Zero Rent-Seeking", 
+    description: "Protocol-level efficiency. Value moves without platform tax, maximizing ROI for all participants.",
+    stat: "0.0% FEES",
+    label: "ECON_DIRECT",
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.407 2.651 1M12 8V7m0 8v1m-2.651-7.144A2.001 2.001 0 008 10c0 1.105.895 2 2 2m4 0c1.105 0 2-.895 2-2 0-1.105-.895-2-2-2m-2 4h.01M12 12V6m0 12v-6"/></svg>`
+  },
 ];
 ---
 
-<section class="sr-features">
+<section id="features" class="sr-blueprints">
+  <!-- Architectural Background -->
+  <div class="sr-blueprints__bg">
+    <div class="blueprint-lines"></div>
+  </div>
+
   <div class="container">
-    <h2 class="sr-features__headline">Why SkillRail</h2>
-    <p class="sr-features__description">
-      Six reasons SkillRail is the protocol for outsourced asynchronous work.
-    </p>
-    
-    <div class="sr-features__grid">
-      {features.map((feature, index) => (
-        <div class="sr-features__card">
-          <div class="sr-features__label">{labels[index]}</div>
-          <h3 class="sr-features__card-title">{feature.title}</h3>
-          <p class="sr-features__card-text">{feature.description}</p>
+    <div class="sr-blueprints__header">
+      <div class="blueprint-tag">CORE_ARCH_SPEC_2026</div>
+      <h2 class="sr-blueprints__headline">Protocol Architecture</h2>
+      <p class="sr-blueprints__description">
+        Precision-engineered for the future of decentralized workforce settlement.
+      </p>
+    </div>
+
+    <div class="blueprints-grid">
+      {features.map((feature) => (
+        <div class="blueprint-card">
+          <div class="blueprint-inner">
+            <div class="blueprint-header">
+              <div class="blueprint-icon" set:html={feature.svg} />
+              <div class="blueprint-id">{feature.label}</div>
+            </div>
+            
+            <h3 class="blueprint-title">{feature.title}</h3>
+            <p class="blueprint-text">{feature.description}</p>
+            
+            <div class="blueprint-footer">
+              <div class="blueprint-stat">
+                <span class="stat-label">OUTPUT:</span>
+                <span class="stat-value">{feature.stat}</span>
+              </div>
+              <div class="blueprint-corners">
+                <span></span><span></span>
+              </div>
+            </div>
+          </div>
+          <div class="blueprint-shadow"></div>
         </div>
       ))}
     </div>
@@ -48,109 +100,194 @@ const labels = [
 </section>
 
 <style>
-  .sr-features {
-    padding: var(--section-padding-vertical-desktop) var(--section-padding-horizontal);
-    background-color: var(--color-bg-primary);
-  }
-  
-  .sr-features__headline {
-    font-size: var(--font-size-h2);
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-heading);
-    letter-spacing: var(--letter-spacing-heading);
-    color: var(--color-navy);
-    text-align: center;
-    margin-bottom: var(--space-lg);
-  }
-  
-  .sr-features__description {
-    font-size: 1.125rem;
-    font-weight: var(--font-weight-regular);
-    line-height: var(--line-height-body);
-    color: var(--color-text-secondary);
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto var(--space-3xl);
-  }
-  
-  .sr-features__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--card-gap);
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  
-  .sr-features__card {
+  .sr-blueprints {
     position: relative;
-    padding: var(--card-padding);
-    padding-left: calc(var(--card-padding) + 0.5rem);
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.02) 0%, rgba(16, 185, 129, 0.02) 100%);
-    border: 1px solid var(--color-border);
-    border-left: 3px solid var(--color-emerald);
-    border-radius: var(--radius-md);
-    transition: all var(--transition-fast);
+    padding: 7rem 0;
+    background: #020617;
+    overflow: hidden;
   }
-  
-  .sr-features__card:hover {
-    border-color: var(--color-indigo);
-    border-left-color: var(--color-emerald);
-    box-shadow: var(--shadow-indigo-md);
-    transform: translateY(-2px);
+
+  .sr-blueprints__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 100% 100%, rgba(16, 185, 129, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.05) 0%, transparent 40%);
   }
-  
-  .sr-features__label {
-    font-size: var(--font-size-label-sm);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--letter-spacing-label);
-    color: var(--color-indigo);
-    text-transform: uppercase;
-    margin-bottom: var(--space-md);
+
+  .blueprint-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100px 100px;
+    mask-image: radial-gradient(circle at center, black, transparent 90%);
   }
-  
-  .sr-features__card-title {
-    font-size: var(--font-size-h4);
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-heading);
-    letter-spacing: var(--letter-spacing-heading);
-    color: var(--color-navy);
-    margin-bottom: var(--space-md);
+
+  .sr-blueprints__header {
+    text-align: left;
+    margin-bottom: 4rem;
+    border-left: 2px solid #10B981;
+    padding-left: 1.5rem;
   }
-  
-  .sr-features__card-text {
-    font-size: var(--font-size-body-sm);
-    font-weight: var(--font-weight-regular);
-    line-height: var(--line-height-body);
-    color: var(--color-text-secondary);
+
+  .blueprint-tag {
+    font-family: var(--font-family-mono);
+    color: #10B981;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
   }
-  
+
+  .sr-blueprints__headline {
+    font-size: 4rem;
+    font-weight: 900;
+    color: white;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+  }
+
+  .sr-blueprints__description {
+    font-size: 1.25rem;
+    color: #64748B;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  .blueprints-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .blueprint-card {
+    position: relative;
+    group: hover;
+  }
+
+  .blueprint-inner {
+    position: relative;
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.5rem;
+    height: 100%;
+    z-index: 2;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .blueprint-card:hover .blueprint-inner {
+    transform: translate(-8px, -8px);
+    border-color: #10B981;
+    background: #1e293b;
+  }
+
+  .blueprint-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    z-index: 1;
+    transition: all 0.4s ease;
+  }
+
+  .blueprint-card:hover .blueprint-shadow {
+    transform: translate(8px, 8px);
+    background: rgba(16, 185, 129, 0.05);
+  }
+
+  .blueprint-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .blueprint-icon {
+    color: #10B981;
+    padding: 0.5rem;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 6px;
+  }
+
+  .blueprint-id {
+    font-family: var(--font-family-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #334155;
+    letter-spacing: 0.1em;
+  }
+
+  .blueprint-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .blueprint-text {
+    font-size: 0.9rem;
+    color: #94A3B8;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+
+  .blueprint-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 1.5rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  }
+
+  .blueprint-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .stat-label {
+    font-family: var(--font-family-mono);
+    font-size: 0.6rem;
+    color: #334155;
+    font-weight: 800;
+  }
+
+  .stat-value {
+    font-family: var(--font-family-mono);
+    font-size: 0.75rem;
+    color: #10B981;
+    font-weight: 700;
+  }
+
+  .blueprint-corners span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-right: 1px solid #334155;
+    border-bottom: 1px solid #334155;
+  }
+
   @media (max-width: 768px) {
-    .sr-features {
-      padding: var(--section-padding-vertical-tablet) var(--section-padding-horizontal-mobile);
+    .sr-blueprints__headline {
+      font-size: 2.5rem;
     }
     
-    .sr-features__headline {
-      font-size: 1.875rem;
-      margin-bottom: var(--space-md);
-    }
-    
-    .sr-features__description {
-      font-size: 1rem;
-      margin-bottom: var(--space-2xl);
-    }
-    
-    .sr-features__grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .sr-features__card {
-      transition: none;
-    }
-    
-    .sr-features__card:hover {
-      transform: none;
+    .sr-blueprints__header {
+      padding-left: 1.5rem;
     }
   }
 </style>

@@ -1,0 +1,270 @@
+---
+/**
+ * Floating Navigation - Glassmorphic & Technical
+ * Only shown on the home page.
+ */
+const isHome = Astro.url.pathname === "/";
+---
+
+{isHome && (
+  <nav class="sr-nav">
+    <div class="container sr-nav__container">
+      <a href="/" class="sr-nav__logo">
+        <span class="logo-symbol">SR</span>
+        <span class="logo-text">SkillRail</span>
+      </a>
+
+      {/* Desktop Menu */}
+      <div class="sr-nav__desktop">
+        <ul class="sr-nav__list">
+          <li><a href="#problem" class="sr-nav__link">Problem</a></li>
+          <li><a href="#solution" class="sr-nav__link">Solution</a></li>
+          <li><a href="#how-it-works" class="sr-nav__link">Protocol</a></li>
+          <li><a href="#features" class="sr-nav__link">Features</a></li>
+          <li><a href="#join" class="sr-nav__link">Join</a></li>
+          <li>
+            <a href="/explore" class="sr-nav__cta-btn">
+              Launch App
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      {/* Mobile Toggle */}
+      <button id="nav-toggle" class="sr-nav__toggle" aria-label="Toggle menu">
+        <span class="sr-nav__toggle-bar"></span>
+        <span class="sr-nav__toggle-bar"></span>
+        <span class="sr-nav__toggle-bar"></span>
+      </button>
+    </div>
+
+    {/* Mobile Menu */}
+    <div id="mobile-menu" class="sr-nav__mobile">
+      <ul class="sr-nav__mobile-list">
+        <li><a href="#problem" class="sr-nav__mobile-link">Problem</a></li>
+        <li><a href="#solution" class="sr-nav__mobile-link">Solution</a></li>
+        <li><a href="#how-it-works" class="sr-nav__mobile-link">Protocol</a></li>
+        <li><a href="#features" class="sr-nav__mobile-link">Features</a></li>
+        <li><a href="#join" class="sr-nav__mobile-link">Join</a></li>
+        <li class="mobile-cta">
+          <a href="/explore" class="sr-nav__cta-btn">Launch App</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+)}
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    menu?.classList.toggle('active');
+    toggle.classList.toggle('active');
+  });
+
+  // Close menu when clicking a link
+  const links = document.querySelectorAll('.sr-nav__mobile-link');
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      menu?.classList.remove('active');
+      toggle?.classList.remove('active');
+    });
+  });
+</script>
+
+<style>
+  .sr-nav {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 1100px;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    border-radius: 100px;
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .sr-nav:hover {
+    background: rgba(15, 23, 42, 0.85);
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+
+  .sr-nav__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1.5rem;
+  }
+
+  .sr-nav__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
+
+  .logo-symbol {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--color-indigo), var(--color-emerald));
+    color: white;
+    font-weight: 900;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-family: var(--font-family-mono);
+  }
+
+  .logo-text {
+    color: white;
+    font-weight: 800;
+    font-size: 1.125rem;
+    letter-spacing: -0.01em;
+  }
+
+  .sr-nav__desktop {
+    display: none;
+  }
+
+  .sr-nav__list {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .sr-nav__link {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+  }
+
+  .sr-nav__link:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .sr-nav__cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--color-indigo), #4f46e5);
+    color: white;
+    text-decoration: none;
+    padding: 0.6rem 1.25rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+    margin-left: 0.5rem;
+  }
+
+  .sr-nav__cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+    filter: brightness(1.1);
+  }
+
+  /* Toggle Button */
+  .sr-nav__toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  .sr-nav__toggle-bar {
+    width: 24px;
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .sr-nav__toggle.active .sr-nav__toggle-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .sr-nav__toggle.active .sr-nav__toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .sr-nav__toggle.active .sr-nav__toggle-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile Menu */
+  .sr-nav__mobile {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(20px);
+    margin: 1rem 0.5rem 0;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+  }
+
+  .sr-nav__mobile.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .sr-nav__mobile-list {
+    list-style: none;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .sr-nav__mobile-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 1.125rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  .sr-nav__mobile-link:hover {
+    color: white;
+  }
+
+  .mobile-cta {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    .sr-nav__desktop {
+      display: block;
+    }
+    .sr-nav__toggle {
+      display: none;
+    }
+  }
+</style>

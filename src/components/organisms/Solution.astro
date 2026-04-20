@@ -1,39 +1,75 @@
 ---
 /**
- * Solution Section - Enterprise-Grade Redesign
+ * Solution Section - Enterprise-Grade Precision
  * 
- * DESIGN PHILOSOPHY: "Trustless Settlement Flow"
- * - Three-column layout with numbered cards
- * - Indigo borders (solution, not problem)
- * - Numbers + connecting lines = visual flow
- * - Emerald accents = settlement/finality
+ * FOLLOWS BRAND_IDENTITY_SYSTEM.MD:
+ * - "Precision Through Restraint" philosophy.
+ * - Lighter background (Slate-100) to alternate with dark sections.
+ * - Indigo borders and Emerald accents.
+ * - No glassmorphism, no emojis.
  */
 
-const solutionHeadline = "Reliable Transactions, Powered by Solana";
-const solutionDescription = "SkillRail is a Solana-native settlement protocol that standardizes the delayed work lifecycle: funding, fulfillment, result submission, and settlement.";
-const benefits = [
-  { title: "Trustless Settlement", description: "On-chain rules ensure fair outcomes for both parties." },
-  { title: "Programmable Workflows", description: "Automate complex work arrangements with smart contracts." },
-  { title: "Agent-Ready", description: "Built for emerging AI and application-driven workflows." },
+const solutionHeadline = "SkillRail Protocol";
+const solutionSubheadline = "The Trustless Standard";
+const solutionDescription = "A Solana-native architecture designed to eliminate settlement risk through deterministic, programmable workflows.";
+
+const solutions = [
+  { 
+    title: "Atomic Escrow", 
+    description: "Program-derived accounts hold assets with immutable logic. Safety is guaranteed by the Solana runtime.",
+    label: "SYS_ESCROW_V2",
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`
+  },
+  { 
+    title: "Deterministic Pay", 
+    description: "Instant, programmable settlement triggered by verifiable work proofs. Zero human-in-the-loop latency.",
+    label: "AUTO_SETTLE_L1",
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`
+  },
+  { 
+    title: "Agentic Logic", 
+    description: "Optimized for the machine-to-machine economy. Native support for autonomous agent participation.",
+    label: "AGENT_RUNTIME",
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8M6 20h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2zM9 16v-4m3 4V10m3 6v-2"/></svg>`
+  },
 ];
 ---
 
-<section class="sr-solution">
-  <div class="container">
-    <h2 class="sr-solution__headline">
-      {solutionHeadline}
-    </h2>
-    <p class="sr-solution__description">
-      {solutionDescription}
-    </p>
+<section id="solution" class="sr-solution-precision">
+  <!-- Subtle Background -->
+  <div class="sr-solution-precision__bg">
+    <div class="grid-subtle"></div>
+  </div>
+  
+  <div class="container relative-z">
+    <!-- Header -->
+    <div class="section-header">
+      <div class="header-badge">
+        <span class="badge-text">PROTO_SOL_01</span>
+      </div>
+      <h2 class="headline">
+        <span class="h-main">{solutionHeadline}</span>
+        <span class="h-sub">{solutionSubheadline}</span>
+      </h2>
+      <p class="description">{solutionDescription}</p>
+    </div>
     
-    <div class="sr-solution__grid">
-      {benefits.map((benefit, index) => (
-        <div class="sr-solution__card">
-          <div class="sr-solution__number">{index + 1}</div>
-          <h3 class="sr-solution__card-title">{benefit.title}</h3>
-          <p class="sr-solution__card-text">{benefit.description}</p>
-          {index < benefits.length - 1 && <div class="sr-solution__connector"></div>}
+    <!-- Solution Matrix -->
+    <div class="solution-grid">
+      {solutions.map((solution) => (
+        <div class="solution-panel">
+          <div class="panel-header">
+            <div class="panel-icon" set:html={solution.svg} />
+            <div class="panel-meta">{solution.label}</div>
+          </div>
+          
+          <h3 class="panel-title">{solution.title}</h3>
+          <p class="panel-text">{solution.description}</p>
+          
+          <div class="panel-footer">
+            <span class="status-chip">SETTLEMENT_READY</span>
+            <div class="status-indicator"></div>
+          </div>
         </div>
       ))}
     </div>
@@ -41,127 +77,107 @@ const benefits = [
 </section>
 
 <style>
-  .sr-solution {
-    padding: var(--section-padding-vertical-desktop) var(--section-padding-horizontal);
-    background-color: var(--color-bg-primary);
-  }
-  
-  .sr-solution__headline {
-    font-size: var(--font-size-h2);
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-heading);
-    letter-spacing: var(--letter-spacing-heading);
-    color: var(--color-navy);
-    text-align: center;
-    margin-bottom: var(--space-lg);
-  }
-  
-  .sr-solution__description {
-    font-size: 1.125rem;
-    font-weight: var(--font-weight-regular);
-    line-height: var(--line-height-body);
-    color: var(--color-text-secondary);
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto var(--space-3xl);
-  }
-  
-  .sr-solution__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--card-gap);
-    max-width: 1000px;
-    margin: 0 auto;
+  .sr-solution-precision {
     position: relative;
+    padding: 6rem 0;
+    background-color: #F8FAFC; /* Neutral Light / Slate-100 */
+    overflow: hidden;
   }
-  
-  .sr-solution__card {
-    position: relative;
-    padding: var(--card-padding);
-    background-color: var(--color-bg-secondary);
-    border: 1px solid var(--color-indigo);
-    border-radius: var(--radius-md);
-    transition: all var(--transition-fast);
-  }
-  
-  .sr-solution__card:hover {
-    border-color: var(--color-indigo);
-    box-shadow: var(--shadow-indigo-md);
-    transform: translateY(-2px);
-  }
-  
-  .sr-solution__number {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    background-color: var(--color-indigo);
-    color: white;
-    border-radius: 50%;
-    font-size: 1.25rem;
-    font-weight: var(--font-weight-bold);
-    font-family: var(--font-family-mono);
-    margin-bottom: var(--space-lg);
-  }
-  
-  .sr-solution__card-title {
-    font-size: var(--font-size-h4);
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-heading);
-    letter-spacing: var(--letter-spacing-heading);
-    color: var(--color-navy);
-    margin-bottom: var(--space-md);
-  }
-  
-  .sr-solution__card-text {
-    font-size: var(--font-size-body-sm);
-    font-weight: var(--font-weight-regular);
-    line-height: var(--line-height-body);
-    color: var(--color-text-secondary);
-  }
-  
-  .sr-solution__connector {
+
+  .relative-z { position: relative; z-index: 10; }
+
+  .sr-solution-precision__bg {
     position: absolute;
-    top: 50%;
-    right: -1rem;
-    width: 2rem;
-    height: 2px;
-    background: linear-gradient(90deg, var(--color-indigo) 0%, transparent 100%);
-    transform: translateY(-50%);
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0.5;
   }
-  
+
+  .grid-subtle {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: linear-gradient(#E2E8F0 1px, transparent 1px), linear-gradient(90deg, #E2E8F0 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle at center, black, transparent);
+  }
+
+  /* ============================================
+     HEADER
+     ============================================ */
+
+  .section-header { text-align: center; margin-bottom: 4rem; }
+
+  .header-badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: #EEF2FF;
+    border: 1px solid #E0E7FF;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+  }
+
+  .badge-text {
+    font-family: var(--font-family-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #6366F1;
+  }
+
+  .headline { margin-bottom: 1.5rem; }
+  .h-main { display: block; font-size: 3.5rem; font-weight: 900; color: #0F172A; line-height: 1.1; letter-spacing: -0.02em; }
+  .h-sub { display: block; font-size: 1.75rem; font-weight: 600; color: #64748B; margin-top: 0.5rem; }
+
+  .description { font-size: 1.25rem; color: #475569; max-width: 650px; margin: 0 auto; line-height: 1.6; }
+
+  /* ============================================
+     SOLUTION GRID
+     ============================================ */
+
+  .solution-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .solution-panel {
+    background: white;
+    border: 1px solid #E2E8F0;
+    padding: 1.5rem 2rem; /* Compacted from 3rem */
+    border-radius: 4px;
+    transition: all 200ms ease-out;
+  }
+
+  .solution-panel:hover {
+    border-color: #6366F1;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.08);
+  }
+
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem; /* Compacted from 2.5rem */
+  }
+
+  .panel-icon { color: #6366F1; }
+  .panel-meta { font-family: var(--font-family-mono); font-size: 0.6rem; color: #94A3B8; font-weight: 700; }
+
+  .panel-title { font-size: 1.5rem; font-weight: 800; color: #0F172A; margin-bottom: 1rem; }
+  .panel-text { font-size: 0.95rem; color: #64748B; line-height: 1.6; margin-bottom: 2rem; }
+
+  .panel-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem; /* Compacted from 2rem */
+    border-top: 1px solid #F1F5F9;
+  }
+
+  .status-chip { font-family: var(--font-family-mono); font-size: 0.65rem; font-weight: 700; color: #10B981; letter-spacing: 0.05em; }
+  .status-indicator { width: 8px; height: 8px; background: #10B981; border-radius: 50%; box-shadow: 0 0 8px #10B981; }
+
   @media (max-width: 768px) {
-    .sr-solution {
-      padding: var(--section-padding-vertical-tablet) var(--section-padding-horizontal-mobile);
-    }
-    
-    .sr-solution__headline {
-      font-size: 1.875rem;
-      margin-bottom: var(--space-md);
-    }
-    
-    .sr-solution__description {
-      font-size: 1rem;
-      margin-bottom: var(--space-2xl);
-    }
-    
-    .sr-solution__grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .sr-solution__connector {
-      display: none;
-    }
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .sr-solution__card {
-      transition: none;
-    }
-    
-    .sr-solution__card:hover {
-      transform: none;
-    }
+    .h-main { font-size: 2.5rem; }
+    .solution-panel { padding: 2rem; }
   }
 </style>

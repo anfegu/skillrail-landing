@@ -1,0 +1,57 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Exploration from "../components/organisms/Exploration.astro";
+import Footer from "../components/organisms/Footer.astro";
+
+const pageTitle = "Protocol Exploration Lab | SkillRail";
+const pageDescription = "Explore the on-chain settlement transitions and cryptographic state of the SkillRail protocol.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <nav class="sr-nav">
+    <div class="container">
+      <a href="/" class="sr-nav__logo">SkillRail</a>
+      <a href="/" class="sr-nav__back">← Back to Portal</a>
+    </div>
+  </nav>
+
+  <main>
+    <Exploration />
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .sr-nav {
+    padding: 1.5rem 0;
+    background-color: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .sr-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sr-nav__logo {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-navy);
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+
+  .sr-nav__back {
+    color: var(--color-indigo);
+    font-family: var(--font-family-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color var(--transition-fast);
+  }
+
+  .sr-nav__back:hover {
+    color: var(--color-navy);
+  }
+</style>

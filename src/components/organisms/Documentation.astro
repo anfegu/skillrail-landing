@@ -1,0 +1,164 @@
+---
+/**
+ * Documentation Section - Technical Blueprint Style
+ * 
+ * DESIGN PHILOSOPHY: "The Architecture of Certainty"
+ * - Grid of technical specifications
+ * - Monospace font for file paths
+ * - Clear descriptions of each document
+ */
+
+const docs = [
+  {
+    title: "Protocol Architecture",
+    description: "High-level principles, system components, and the mathematical state-management logic.",
+    icon: "🏛️"
+  },
+  {
+    title: "On-Chain Engine",
+    description: "Detailed technical specification of the Solana smart contract and account data structures.",
+    icon: "🏗️"
+  },
+  {
+    title: "TypeScript SDK",
+    description: "Comprehensive guide for integrating with the SkillRail universal connector.",
+    icon: "📦"
+  },
+  {
+    title: "API Reference",
+    description: "Complete documentation of protocol instructions, events, and state transitions.",
+    icon: "🔌"
+  },
+  {
+    title: "Senior Engineering Guide",
+    description: "Crucial technical manual for build stability, environment agnosticism, and enterprise deployment.",
+    icon: "🛠️"
+  },
+  {
+    title: "Implementation Roadmap",
+    description: "Low-level technical requirements and the cryptographic work settlement pipeline.",
+    icon: "📜"
+  }
+];
+---
+
+<section id="docs" class="sr-docs">
+  <div class="container">
+    <div class="sr-docs__header">
+      <div class="sr-docs__label">TECHNICAL KNOWLEDGE BASE</div>
+      <h2 class="sr-docs__headline">The Source of Truth</h2>
+      <p class="sr-docs__description">
+        SkillRail is built on transparency and absolute precision. Explore our high-assurance documentation for a deep dive into the protocol's inner workings.
+      </p>
+    </div>
+
+    <div class="sr-docs__grid">
+      {docs.map((doc) => (
+        <div class="sr-docs__card">
+          <div class="sr-docs__card-icon">{doc.icon}</div>
+          <h3 class="sr-docs__card-title">{doc.title}</h3>
+          <p class="sr-docs__card-text">{doc.description}</p>
+          <span class="sr-docs-card-link">Explore Specification →</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .sr-docs {
+    padding: var(--section-padding-vertical-desktop) var(--section-padding-horizontal);
+    background-color: var(--color-navy);
+    color: white;
+  }
+
+  .sr-docs__header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sr-docs__label {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-label-sm);
+    color: var(--color-indigo-light);
+    letter-spacing: var(--letter-spacing-label);
+    margin-bottom: var(--space-md);
+  }
+
+  .sr-docs__headline {
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-bold);
+    color: white;
+    margin-bottom: var(--space-lg);
+  }
+
+  .sr-docs__description {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: var(--line-height-body);
+  }
+
+  .sr-docs__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--card-gap);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .sr-docs__card {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: var(--card-padding);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+  }
+
+  .sr-docs__card:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--color-indigo);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-indigo-md);
+  }
+
+  .sr-docs__card-icon {
+    font-size: 2rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .sr-docs__card-title {
+    font-size: var(--font-size-h3);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-sm);
+    color: white;
+  }
+
+  .sr-docs-card-link {
+    font-size: var(--font-size-label-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-indigo-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: auto;
+    padding-top: var(--space-md);
+  }
+
+  .sr-docs__card-text {
+    font-size: var(--font-size-body-sm);
+    color: rgba(255, 255, 255, 0.6);
+    line-height: var(--line-height-body);
+  }
+
+  @media (max-width: 768px) {
+    .sr-docs {
+      padding: var(--section-padding-vertical-tablet) var(--section-padding-horizontal-mobile);
+    }
+    
+    .sr-docs__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

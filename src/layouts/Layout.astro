@@ -1,12 +1,17 @@
 ---
 import "../styles/main.css";
+import FloatingNav from "../components/organisms/FloatingNav.astro";
 
 interface Props {
   title: string;
   description: string;
+  keywords?: string;
+  ogImage?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, keywords, ogImage } = Astro.props;
+const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site) : null;
+const defaultOgImage = "/og-image.png"; // You can add this later
 ---
 
 <!doctype html>
@@ -15,18 +20,92 @@ const { title, description } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#9945FF" />
+    
+    <!-- Enhanced SEO Meta Tags -->
+    {keywords && <meta name="keywords" content={keywords} />}
+    <meta name="author" content="SkillRail Protocol" />
+    <meta name="robots" content="index, follow" />
+    {canonicalURL && <link rel="canonical" href={canonicalURL} />}
+    
+    <!-- Theme and Brand Colors -->
+    <meta name="theme-color" content="#6366F1" />
+    <meta name="msapplication-TileColor" content="#6366F1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    {canonicalURL && <meta property="og:url" content={canonicalURL} />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImage || defaultOgImage} />
+    <meta property="og:site_name" content="SkillRail Protocol" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    {canonicalURL && <meta name="twitter:url" content={canonicalURL} />}
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage || defaultOgImage} />
+    <meta name="twitter:creator" content="@SkillRailProtocol" />
+    
+    <!-- Additional Meta Tags for Web3/Crypto -->
+    <meta name="application-name" content="SkillRail Protocol" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
     <title>{title}</title>
   </head>
   <body>
+    <FloatingNav />
     <slot />
+    
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="sr-only sr-only-focusable">
+      Skip to main content
+    </a>
   </body>
 </html>
+
+<style>
+  /* Screen reader only content that becomes visible on focus */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  
+  .sr-only-focusable:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    background-color: var(--color-indigo);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-semibold);
+    z-index: var(--z-tooltip);
+  }
+</style>
