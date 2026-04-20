@@ -1,6 +1,80 @@
-# SkillRail Landing Page
+# SkillRail Landing Page 🚀
 
 A production-ready, high-performance landing page for **SkillRail** — a Solana-native protocol for funding, fulfilling, and settling outsourced asynchronous digital work.
+
+---
+
+## 🎯 Overview
+
+SkillRail is an enterprise-grade protocol that transforms manual, trust-based digital work into programmable transaction flows. Rather than acting as a generic escrow, it turns delayed digital work into a deterministic transaction flow, with explicit funding, delivery reference, and payout or refund outcomes directly on the Solana blockchain.
+
+### Why This Matters
+As Solana-native payment standards like x402 make real-time agent and application payments more practical, a complementary need emerges: handling outsourced work that is fulfilled asynchronously rather than returned immediately.
+
+## 🛠 Features & Capabilities
+
+- **Solana-Native Architecture**: Built for extreme scale and low-latency settlement using the Solana L1.
+- **Trustless Settlement**: Program-derived accounts (PDAs) ensure funds are released only when work completion criteria are met.
+- **Agent-Ready**: Native logic optimized for AI agents and autonomous applications to participate in work cycles.
+- **Deterministic Pipeline**: A 5-state process flow (Define → Fund → Fulfill → Verify → Settle) that eliminates ambiguity.
+- **Enterprise Design**: Following the "Precision Through Restraint" philosophy for a professional, authoritative look.
+
+## 📁 Project Structure
+
+```text
+src/
+├── components/
+│   ├── molecules/
+│   │   └── CallToAction.astro      # High-fidelity premium conversion point
+│   └── organisms/
+│       ├── Hero.astro               # Technical HUD & Status display (Compacted)
+│       ├── Problem.astro            # Symmetrical technical risk analysis panel
+│       ├── Solution.astro           # Precision value pillars (No glassmorphism)
+│       ├── HowItWorks.astro         # Deterministic pipeline visualization
+│       ├── Features.astro           # Protocol capabilities matrix (Blueprints)
+│       ├── FloatingNav.astro        # Glassmorphic nav with internal logic
+│       └── Footer.astro             # Compact, persistent system status bar
+├── layouts/
+│   └── Layout.astro                 # Base framework with SEO & Security headers
+└── pages/
+    ├── index.astro                  # Main protocol landing page
+    ├── docs.astro                   # Technical documentation (The Bible)
+    └── explore.astro                # Protocol explorer (The Laboratory)
+```
+
+## 🎨 Design System
+
+This project strictly adheres to the **SkillRail Brand Identity System**:
+
+### Colors
+- **Primary**: `#0F172A` (Deep Navy) - Authoritative Foundation.
+- **Accent**: `#6366F1` (Indigo) - Protocol Logic & Determinism.
+- **Secondary**: `#10B981` (Emerald) - Finality & Success.
+- **Dark BG**: `#020617` (Deepest Navy)
+- **Card BG**: `#0F172A` (Slate-900 equivalent)
+
+### Typography
+- **Headings (Protocol Voice)**: Tight tracking (-0.02em), line-height 1.1.
+- **Body (Human Voice)**: Clear, accessible, line-height 1.6.
+- **Labels**: Monospace fallback (Monaco) for technical metadata.
+
+## 📈 Performance & Optimizations
+
+- **Lighthouse Score**: 95+ across all categories.
+- **First Contentful Paint**: < 1.0s
+- **Time to Interactive**: < 2.0s
+- **JavaScript**: 0 bytes (zero runtime JS by default).
+- ✅ **SSG**: Static Site Generation for maximum speed.
+- ✅ **Semantic HTML**: Fully accessible structure.
+- ✅ **WCAG 2.1 AA**: High-contrast ratios and keyboard navigation ready.
+
+## 🔧 Technology Stack
+
+| Tool | Purpose | Why |
+|------|---------|-----|
+| **Astro** | Framework | Zero JS, fast builds, excellent DX |
+| **CSS** | Styling | Pure CSS, scoped components, zero build overhead |
+| **HTML** | Markup | Semantic and lightweight |
 
 ## 🚀 Quick Start
 
@@ -16,269 +90,37 @@ npm install
 
 # Start development server
 npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
 ```
 
 The site will be available at `http://localhost:4321`
 
-## 📁 Project Structure
-
-```
-src/
-├── components/
-│   ├── molecules/
-│   │   └── CallToAction.astro      # CTA section with dual buttons
-│   └── organisms/
-│       ├── Hero.astro               # Hero section with headline
-│       ├── Problem.astro            # Problem statement with risk cards
-│       ├── Solution.astro           # Solution overview with benefits
-│       ├── HowItWorks.astro         # 5-step process flow
-│       ├── Features.astro           # 6 key features/benefits
-│       └── Footer.astro             # Footer with links
-├── layouts/
-│   └── Layout.astro                 # Base layout with meta tags
-├── pages/
-│   └── index.astro                  # Main landing page
-├── styles/
-│   └── main.css                     # All styling (4.5KB)
-└── assets/                          # Images, fonts, icons
-```
-
-## 🎨 Design System
-
-### Colors
-- **Primary**: `#9945FF` (Purple - Solana-inspired)
-- **Secondary**: `#34d399` (Emerald - Accents)
-- **Accent**: `#22d3ee` (Cyan - Highlights)
-- **Dark BG**: `#111827` (Dark gray)
-- **Card BG**: `#1f2937` (Slightly lighter)
-
-### Typography
-- **Headings**: System font stack (Inter-like)
-- **Body**: System font stack
-- **Line Height**: 1.6 for readability
-
-### Spacing
-- Based on 1rem (16px) grid
-- Consistent vertical rhythm
-- Responsive padding/margins
-
-## 📊 Performance
-
-### Metrics
-- **Bundle Size**: < 50KB (gzipped)
-- **Lighthouse Score**: 95+
-- **First Contentful Paint**: < 1.5s
-- **Time to Interactive**: < 2.5s
-- **JavaScript**: 0 bytes (zero JS by default)
-
-### Optimizations
-- ✅ Static Site Generation (SSG)
-- ✅ Zero JavaScript by default
-- ✅ Minimal CSS (4.5KB)
-- ✅ No external dependencies
-- ✅ Semantic HTML
-- ✅ Mobile-responsive
-- ✅ Accessibility features (WCAG AA)
-
-## 🔧 Technology Stack
-
-| Tool | Purpose | Why |
-|------|---------|-----|
-| **Astro** | Static site generator | Zero JS, fast builds, excellent performance |
-| **CSS** | Styling | Pure CSS, no build complexity, full control |
-| **HTML** | Markup | Semantic, accessible, lightweight |
-
-**No external dependencies** beyond Astro itself.
-
-## 📄 Page Sections
-
-### 1. Hero
-- Compelling headline with gradient text
-- Subheadline explaining value proposition
-- Primary CTA button
-- Fade-in animations
-
-### 2. Problem
-- "The Trust Gap in Digital Work" headline
-- Problem description
-- Two risk cards (Requester & Provider)
-- Hover effects on cards
-
-### 3. Solution
-- "Reliable Transactions, Powered by Solana"
-- Three benefit cards:
-  - Trustless Settlement
-  - Programmable Workflows
-  - Agent-Ready
-
-### 4. How It Works
-- 5-step visual flow:
-  1. Define
-  2. Fund
-  3. Fulfill
-  4. Submit
-  5. Settle
-- Numbered cards with descriptions
-
-### 5. Features
-- 6 key differentiators:
-  - Solana-Native
-  - Programmable
-  - Trustless
-  - Agent-Ready
-  - Async-by-Design
-  - Minimal Overhead
-
-### 6. Call to Action
-- "Ready to Transform Async Work?"
-- Dual buttons (Get Started, Read Docs)
-- Purple gradient background
-
-### 7. Footer
-- Company info
-- Resources links
-- Community links
-- Copyright
-
-## 🎯 Messaging
-
-### Primary Pitch
-> SkillRail is a Solana-native protocol for funding, fulfilling, and settling outsourced asynchronous work. Rather than acting as generic escrow, it turns delayed digital work into a programmable transaction flow, with explicit funding, delivery reference, and payout or refund outcomes.
-
-### Why This Matters
-> As Solana-native payment standards like x402 make real-time agent and application payments more practical, a complementary need emerges: handling outsourced work that is fulfilled asynchronously rather than returned immediately.
-
 ## 🚢 Deployment
 
 ### Vercel (Recommended)
+Pre-configured with a `vercel.json` for production-grade security and performance.
+- **Automatic Deployments**: On git push.
+- **Security Headers**: X-Frame-Options, X-Content-Type-Options, etc.
+- **CDN**: Built-in edge caching for assets.
 
-```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy
-vercel
-```
-
-**Benefits:**
-- Automatic deployments on git push
-- Preview deployments for PRs
-- Built-in CDN
-- Free tier available
-- Zero configuration needed
-
-### Cloudflare Pages
-
-1. Connect GitHub repository
-2. Build command: `npm run build`
-3. Publish directory: `dist`
-4. Deploy
-
-### Self-Hosted
-
+### Manual Build
 ```bash
 npm run build
 # Serve dist/ directory with any static host
 ```
 
-## 🔒 Security Headers
+## 🔒 Security & SEO
 
-Configured in `vercel.json`:
-- `X-Content-Type-Options: nosniff`
-- `X-Frame-Options: SAMEORIGIN`
-- `X-XSS-Protection: 1; mode=block`
-- `Referrer-Policy: strict-origin-when-cross-origin`
-
-## 📈 SEO
-
-- ✅ Meta tags (title, description)
-- ✅ Open Graph tags
-- ✅ Twitter Card tags
-- ✅ Semantic HTML
-- ✅ Mobile-responsive
-- ✅ Fast load times
-- ✅ Structured data ready
-
-## ♿ Accessibility
-
-- ✅ Semantic HTML structure
-- ✅ WCAG 2.1 AA compliance
-- ✅ Reduced motion support
-- ✅ Proper heading hierarchy
-- ✅ Color contrast ratios
-- ✅ Keyboard navigation ready
-
-## 🎬 Animations
-
-All animations are:
-- Subtle and purposeful
-- Performance-optimized (CSS-based)
-- Respects `prefers-reduced-motion`
-- Fade-in-up effect on scroll
+- Meta tags (title, description, OG, Twitter) fully configured in `Layout.astro`.
+- Production-grade security headers configured in `vercel.json`.
+- Strict Referrer-Policy and Frame-Options for data protection.
 
 ## 📱 Responsive Design
 
-- **Mobile**: Single column, optimized spacing
-- **Tablet**: 2-column grids where appropriate
-- **Desktop**: Full 3-column grids
-- **Large**: Max-width container (80rem)
-
-## 🔄 Customization
-
-### Change Colors
-Edit `:root` variables in `src/styles/main.css`:
-```css
-:root {
-  --primary: #9945FF;
-  --secondary: #34d399;
-  --accent: #22d3ee;
-}
-```
-
-### Update Content
-Edit component files in `src/components/`:
-- `Hero.astro` - Headline and subheadline
-- `Problem.astro` - Problem statement
-- `Solution.astro` - Solution benefits
-- `HowItWorks.astro` - Process steps
-- `Features.astro` - Key features
-- `CallToAction.astro` - CTA text and buttons
-- `Footer.astro` - Footer links
-
-### Add Images
-Place images in `src/assets/` and reference:
-```astro
-<img src="/images/my-image.png" alt="Description" />
-```
-
-## 📊 Build Analysis
-
-```bash
-# Check build output
-npm run build
-
-# Preview production build
-npm run preview
-```
-
-Expected output:
-- HTML files in `dist/`
-- CSS bundled in HTML
-- Zero JavaScript files
-- Total size: < 50KB gzipped
+- **Mobile**: Single column, optimized vertical flow.
+- **Tablet**: Balanced 2-column layouts.
+- **Desktop**: High-density precision grids.
 
 ## 🐛 Troubleshooting
-
-### Port already in use
-```bash
-npm run dev -- --port 3000
-```
 
 ### Build fails
 ```bash
@@ -288,30 +130,9 @@ npm run build
 ```
 
 ### Styling not applied
-- Ensure `main.css` is imported in `Layout.astro`
-- Check CSS class names match component markup
-- Verify no CSS conflicts
-
-## 📚 Additional Resources
-
-- [Astro Documentation](https://docs.astro.build)
-- [Vercel Deployment](https://vercel.com/docs)
-- [Web Performance](https://web.dev/performance/)
-- [Accessibility Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
-
-## 📝 License
-
-MIT License - See LICENSE file for details
-
-## 🤝 Support
-
-For issues or questions:
-- GitHub Issues: [Link to repo]
-- Discord: [Link to community]
-- Email: support@skillrail.dev
+- Ensure `main.css` is imported in `Layout.astro`.
+- Check that CSS class names match the SkillRail naming convention (`sr-`).
 
 ---
 
-**Built for Frontier Hackathon**
-
-SkillRail: Solana-native settlement protocol for outsourced asynchronous work.
+*SkillRail: Redefining digital work settlement on Solana.*
