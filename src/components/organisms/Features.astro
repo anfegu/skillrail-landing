@@ -300,13 +300,26 @@ const features = [
       padding: 0 1.25rem 2rem;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
+      scrollbar-width: thin;
+      scrollbar-color: #10B981 rgba(16, 185, 129, 0.1);
       /* Visual cue that more content is available to the right */
-      mask-image: linear-gradient(to right, black 80%, transparent 100%);
+      mask-image: linear-gradient(to right, black 90%, transparent 100%);
     }
     
     .blueprints-grid::-webkit-scrollbar {
-      display: none;
+      display: block;
+      height: 3px;
+    }
+
+    .blueprints-grid::-webkit-scrollbar-track {
+      background: rgba(16, 185, 129, 0.05);
+      border-radius: 10px;
+    }
+
+    .blueprints-grid::-webkit-scrollbar-thumb {
+      background: #10B981;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
     }
     
     .blueprint-card {
