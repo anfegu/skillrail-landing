@@ -7,6 +7,7 @@ yarn.lock
 # Build output
 dist/
 .astro/
+.vercel/
 
 # Environment variables
 .env
