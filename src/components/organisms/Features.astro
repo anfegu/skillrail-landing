@@ -282,12 +282,58 @@ const features = [
   }
 
   @media (max-width: 768px) {
+    .sr-blueprints {
+      padding: 4rem 0;
+    }
     .sr-blueprints__headline {
       font-size: 2.5rem;
     }
-    
     .sr-blueprints__header {
-      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+      padding-left: 1rem;
+    }
+    
+    .blueprints-grid {
+      display: flex;
+      overflow-x: auto;
+      gap: 1.25rem;
+      padding: 0 1.25rem 2rem;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      /* Visual cue that more content is available to the right */
+      mask-image: linear-gradient(to right, black 80%, transparent 100%);
+    }
+    
+    .blueprints-grid::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .blueprint-card {
+      flex: 0 0 85%;
+      scroll-snap-align: center;
+    }
+
+    .blueprint-inner {
+      padding: 2rem;
+    }
+
+    .blueprint-title {
+      font-size: 1.75rem;
+    }
+
+    .blueprint-text {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Remove vertical noise for better mobile comprehension */
+    .blueprint-id, .blueprint-footer, .blueprint-shadow {
+      display: none;
+    }
+
+    .blueprint-card:hover .blueprint-inner {
+      transform: none; /* Disable 3D transform on mobile to avoid layout shifts during scroll */
     }
   }
 </style>

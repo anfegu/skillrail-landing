@@ -8,41 +8,43 @@ const pageDescription = "Explore the on-chain settlement transitions and cryptog
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <nav class="sr-nav">
-    <div class="container">
-      <a href="/" class="sr-nav__logo">SkillRail</a>
-      <a href="/" class="sr-nav__back">← Back to Portal</a>
-    </div>
-  </nav>
+  <div class="sr-explore-wrapper">
+    <nav class="sr-explore-nav">
+      <div class="container">
+        <a href="/" class="sr-explore-nav__logo">SkillRail</a>
+        <a href="/" class="sr-explore-nav__back">← Back to Portal</a>
+      </div>
+    </nav>
 
-  <main>
-    <Exploration />
-  </main>
+    <main class="sr-explore-main">
+      <Exploration />
+    </main>
 
-  <Footer />
+    <Footer />
+  </div>
 </Layout>
 
 <style>
-  .sr-nav {
+  .sr-explore-nav {
     padding: 1.5rem 0;
     background-color: var(--color-bg-secondary);
     border-bottom: 1px solid var(--color-border);
   }
 
-  .sr-nav .container {
+  .sr-explore-nav .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .sr-nav__logo {
+  .sr-explore-nav__logo {
     font-weight: var(--font-weight-bold);
     color: var(--color-navy);
     font-size: 1.25rem;
     letter-spacing: -0.01em;
   }
 
-  .sr-nav__back {
+  .sr-explore-nav__back {
     color: var(--color-indigo);
     font-family: var(--font-family-mono);
     font-size: 0.75rem;
@@ -51,7 +53,61 @@ const pageDescription = "Explore the on-chain settlement transitions and cryptog
     transition: color var(--transition-fast);
   }
 
-  .sr-nav__back:hover {
+  .sr-explore-nav__back:hover {
     color: var(--color-navy);
+  }
+
+  .sr-explore-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-color: var(--color-bg-secondary);
+    overflow-x: hidden;
+  }
+
+  .sr-explore-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Mobile-specific fix to keep Nav and Footer visible during scroll */
+  @media (max-width: 768px) {
+    .sr-explore-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1001;
+      background-color: var(--color-bg-secondary);
+    }
+
+    .sr-explore-wrapper :global(.sr-footer-compact) {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1001;
+    }
+
+    .sr-explore-wrapper {
+      padding-top: 5rem; /* Nav height approximation */
+      padding-bottom: 5rem; /* Footer height approximation */
+    }
+
+    .sr-explore-main {
+      justify-content: flex-start; /* Better for scrolling content on mobile */
+      padding-top: 1rem;
+    }
+  }
+
+  /* Stabilize footer for desktop as well */
+  @media (min-width: 769px) {
+    .sr-explore-wrapper :global(.sr-footer-compact) {
+      position: relative;
+      margin-top: auto;
+    }
   }
 </style>

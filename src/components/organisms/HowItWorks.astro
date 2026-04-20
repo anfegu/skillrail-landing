@@ -442,15 +442,77 @@ const steps = [
   
   @media (max-width: 768px) {
     .sr-how-it-works {
-      padding: 4rem 0;
+      padding: 2.5rem 0;
     }
     
     .sr-how-it-works__headline {
-      font-size: 2.5rem;
+      font-size: 2.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .sr-how-it-works__header {
+      margin-bottom: 2rem;
+    }
+    
+    .sr-how-it-works__pipeline {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0 !important;
+      padding: 0 1.5rem !important;
     }
     
     .pipeline-step {
-      flex: 1 1 100%;
+      width: 100% !important;
+      flex: none !important;
+    }
+
+    .step-card {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: flex-start !important;
+      gap: 1rem !important;
+      padding: 1.25rem 0 !important;
+      background: none !important;
+      border: none !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+      border-radius: 0 !important;
+      backdrop-filter: none !important;
+    }
+
+    .step-header {
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 0.25rem !important;
+      margin: 0 !important;
+    }
+
+    .step-tag, .step-status, .icon-ring, .card-glow, .pipeline-connector {
+      display: none !important;
+    }
+
+    .step-icon {
+      margin: 0 !important;
+      width: 32px !important;
+      height: 32px !important;
+    }
+
+    .icon-symbol {
+      font-size: 1.15rem !important;
+    }
+
+    .step-number {
+      font-size: 0.7rem !important;
+    }
+
+    .step-title {
+      font-size: 1.15rem !important;
+      margin-bottom: 0.25rem !important;
+    }
+
+    .step-text {
+      font-size: 0.9rem !important;
+      line-height: 1.4 !important;
+      margin: 0 !important;
     }
   }
 </style>

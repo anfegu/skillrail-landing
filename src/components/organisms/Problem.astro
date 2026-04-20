@@ -258,8 +258,36 @@ const problemDescription = "Digital work suffers from fundamental trust issues t
   @keyframes warningFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
   @media (max-width: 1024px) {
-    .risk-matrix { grid-template-columns: 1fr; gap: 2rem; }
-    .matrix-divider { flex-direction: row; height: auto; justify-content: center; margin-bottom: 2rem; }
-    .divider-line { height: 1px; width: 60px; }
+    .risk-matrix { grid-template-columns: 1fr; gap: 1.5rem; }
+    .matrix-divider { display: none; }
+  }
+
+  @media (max-width: 768px) {
+    .sr-problem-refined { padding: 3rem 0; }
+    .headline { font-size: 2.25rem; }
+    .description { font-size: 1.1rem; }
+    
+    .risk-module { 
+      padding: 1.25rem; 
+      border-radius: 4px;
+    }
+    
+    .module-header {
+      margin-bottom: 1rem;
+    }
+
+    .module-title { font-size: 1.25rem; }
+    .module-text { font-size: 0.9rem; margin-bottom: 1.25rem; line-height: 1.4; }
+    
+    .module-stats {
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .m-val { font-size: 1rem; }
+
+    .system-impact { padding-top: 2rem; }
+    .impact-title { font-size: 1.5rem; }
+    .impact-text { font-size: 0.95rem; }
   }
 </style>

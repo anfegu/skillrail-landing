@@ -153,20 +153,79 @@ const docsPath = import.meta.env.PUBLIC_DOCS_URL || "/docs";
   }
 
   @media (max-width: 768px) {
+    .sr-footer-compact {
+      padding: 0.3rem 0;
+      height: auto;
+    }
+    
     .footer-content {
-      flex-direction: column;
-      gap: 1.5rem;
-      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .brand-logo {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.3rem;
+    }
+
+    .brand-copy {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: #94A3B8;
+    }
+
+    .footer-nav {
+      width: 100%;
+      order: 3;
+      padding-top: 0.25rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
     }
 
     .footer-links {
-      gap: 1.25rem;
+      display: flex;
+      flex-direction: row;
       flex-wrap: wrap;
       justify-content: center;
+      gap: 0.2rem 1rem;
     }
-    
+
+    .f-link {
+      font-size: 0.7rem;
+      letter-spacing: 0;
+    }
+
     .footer-status {
-      order: -1;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .status-label {
+      display: inline-block;
+      font-size: 0.6rem;
+    }
+
+    .status-value {
+      font-size: 0.65rem;
+    }
+
+    .status-pulse {
+      width: 5px;
+      height: 5px;
+    }
+
+    .sr-footer-compact .container {
+      padding: 0 1rem;
+      max-width: none;
     }
   }
 </style>

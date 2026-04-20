@@ -103,7 +103,7 @@ const docs = [
 
   .sr-docs__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--card-gap);
     max-width: 1200px;
     margin: 0 auto;
@@ -122,6 +122,18 @@ const docs = [
     border-color: var(--color-indigo);
     transform: translateY(-4px);
     box-shadow: var(--shadow-indigo-md);
+  }
+
+  @media (max-width: 768px) {
+    .sr-docs__card {
+      background-color: rgba(255, 255, 255, 0.04);
+      border-left: 3px solid var(--color-indigo);
+      padding: 1.5rem;
+    }
+    
+    .sr-docs__headline {
+      font-size: 1.75rem;
+    }
   }
 
   .sr-docs__card-icon {

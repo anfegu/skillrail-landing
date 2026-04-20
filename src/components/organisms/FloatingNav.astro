@@ -60,6 +60,8 @@ const isHome = Astro.url.pathname === "/";
 <script>
   const toggle = document.getElementById('nav-toggle');
   const menu = document.getElementById('mobile-menu');
+  const nav = document.querySelector('.sr-nav');
+  let lastScrollY = window.scrollY;
 
   toggle?.addEventListener('click', () => {
     menu?.classList.toggle('active');
@@ -73,6 +75,24 @@ const isHome = Astro.url.pathname === "/";
       menu?.classList.remove('active');
       toggle?.classList.remove('active');
     });
+  });
+
+  // Auto-hide header on scroll (Mobile only)
+  window.addEventListener('scroll', () => {
+    if (!nav || menu?.classList.contains('active')) return;
+    
+    // Only auto-hide on mobile screens
+    if (window.innerWidth <= 768) {
+      if (window.scrollY > lastScrollY && window.scrollY > 100) {
+        nav.style.transform = 'translateX(-50%) translateY(-150%)';
+      } else {
+        nav.style.transform = 'translateX(-50%) translateY(0)';
+      }
+    } else {
+      // Ensure it's always visible on desktop
+      nav.style.transform = 'translateX(-50%) translateY(0)';
+    }
+    lastScrollY = window.scrollY;
   });
 </script>
 
@@ -103,6 +123,24 @@ const isHome = Astro.url.pathname === "/";
     justify-content: space-between;
     align-items: center;
     padding: 0.6rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .sr-nav {
+      top: 0.5rem;
+      width: 95%;
+    }
+    .sr-nav__container {
+      padding: 0.4rem 1rem;
+    }
+    .logo-symbol {
+      width: 24px;
+      height: 24px;
+      font-size: 0.6rem;
+    }
+    .logo-text {
+      font-size: 0.9rem;
+    }
   }
 
   .sr-nav__logo {
@@ -259,7 +297,7 @@ const isHome = Astro.url.pathname === "/";
     border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     .sr-nav__desktop {
       display: block;
     }

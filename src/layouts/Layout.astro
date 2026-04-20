@@ -67,9 +67,11 @@ const defaultOgImage = "/og-image.png"; // You can add this later
     
     <title>{title}</title>
   </head>
-  <body>
+  <body class="sr-layout-body">
     <FloatingNav />
-    <slot />
+    <main id="main-content" class="sr-main-content">
+      <slot />
+    </main>
     
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="sr-only sr-only-focusable">
@@ -107,5 +109,18 @@ const defaultOgImage = "/og-image.png"; // You can add this later
     border-radius: var(--radius-md);
     font-weight: var(--font-weight-semibold);
     z-index: var(--z-tooltip);
+  }
+
+  /* Layout Helper for persistent footer */
+  .sr-layout-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .sr-main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 </style>

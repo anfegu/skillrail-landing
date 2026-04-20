@@ -29,7 +29,7 @@
         </div>
       </div>
       <p class="sr-explore__footer">
-        While we calibrate, please refer to the <a href="#docs">technical documentation</a> to explore the protocol's mathematical foundation.
+        While we calibrate, please refer to the <a href="/docs">technical documentation</a> to explore the protocol's mathematical foundation.
       </p>
     </div>
   </div>
@@ -37,12 +37,14 @@
 
 <style>
   .sr-explore {
-    padding: var(--section-padding-vertical-desktop) var(--section-padding-horizontal);
+    padding: 2rem var(--section-padding-horizontal);
     background-color: var(--color-bg-secondary);
     display: flex;
+    flex: 1;
     justify-content: center;
     align-items: center;
     text-align: center;
+    min-height: 0;
   }
 
   .sr-explore__content {
@@ -142,15 +144,36 @@
 
   @media (max-width: 768px) {
     .sr-explore {
-      padding: var(--section-padding-vertical-tablet) var(--section-padding-horizontal-mobile);
+      padding: 3rem 0;
     }
     
+    .sr-explore__icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
     .sr-explore__headline {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .sr-explore__terminal {
+      margin-bottom: 1.5rem;
     }
 
     .sr-explore__terminal-body {
-      font-size: 0.8125rem;
+      padding: 1rem;
+      font-size: 0.75rem;
+      line-height: 1.4;
+    }
+
+    /* Compress by removing the long descriptive line */
+    .sr-explore__text:nth-child(3) {
+      display: none;
+    }
+
+    .sr-explore__footer {
+      font-size: 0.85rem;
     }
   }
 </style>
