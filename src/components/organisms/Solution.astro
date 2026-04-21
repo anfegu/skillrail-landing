@@ -11,12 +11,23 @@
 
 const solutionHeadline = "SkillRail Protocol";
 const solutionSubheadline = "The Trustless Standard";
-const solutionDescription = "A Solana-native architecture designed to eliminate settlement risk through deterministic, programmable workflows.";
+const solutionDescription = "A Solana-native smart infrastructure protocol designed for the autonomous coordination, execution, and settlement of digital work and agent-driven workflows.";
+const solutionStatus = import.meta.env.PUBLIC_SOLUTION_STATUS || "DEVELOPMENT_ACTIVE";
+
+// Status Color Logic
+const solutionStatusColors = {
+  DEVELOPMENT_ACTIVE: "#94A3B8",        // Slate - Foundational Building
+  PHASE_01_INITIALIZATION: "#6366F1",   // Indigo - Systematic Setup
+  PHASE_02_VALIDATION: "#F59E0B",       // Amber - Testing/Verification
+  SETTLEMENT_READY: "#10B981",          // Emerald - Completed/Finality
+};
+
+const currentSolutionColor = solutionStatusColors[solutionStatus as keyof typeof solutionStatusColors] || "#94A3B8";
 
 const solutions = [
   { 
     title: "Atomic Escrow", 
-    description: "Program-derived accounts hold assets with immutable logic. Safety is guaranteed by the Solana runtime.",
+    description: "Programmable logic accounts hold assets with immutable rules. Safety is guaranteed by distributed network consensus. (Solana runtime)",
     label: "SYS_ESCROW_V2",
     svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`
   },
@@ -67,8 +78,8 @@ const solutions = [
           <p class="panel-text">{solution.description}</p>
           
           <div class="panel-footer">
-            <span class="status-chip">SETTLEMENT_READY</span>
-            <div class="status-indicator"></div>
+            <span class="status-chip" style={`color: ${currentSolutionColor}`}>{solutionStatus}</span>
+            <div class="status-indicator dev-mode" style={`background: ${currentSolutionColor}; box-shadow: 0 0 8px ${currentSolutionColor}`}></div>
           </div>
         </div>
       ))}
@@ -144,6 +155,9 @@ const solutions = [
     padding: 1.5rem 2rem; /* Compacted from 3rem */
     border-radius: 4px;
     transition: all 200ms ease-out;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
   .solution-panel:hover {
@@ -163,7 +177,7 @@ const solutions = [
   .panel-meta { font-family: var(--font-family-mono); font-size: 0.6rem; color: #94A3B8; font-weight: 700; }
 
   .panel-title { font-size: 1.5rem; font-weight: 800; color: #0F172A; margin-bottom: 1rem; }
-  .panel-text { font-size: 0.95rem; color: #64748B; line-height: 1.6; margin-bottom: 2rem; }
+  .panel-text { font-size: 0.95rem; color: #64748B; line-height: 1.6; margin-bottom: 2rem; flex: 1; }
 
   .panel-footer {
     display: flex;
@@ -173,8 +187,15 @@ const solutions = [
     border-top: 1px solid #F1F5F9;
   }
 
-  .status-chip { font-family: var(--font-family-mono); font-size: 0.65rem; font-weight: 700; color: #10B981; letter-spacing: 0.05em; }
-  .status-indicator { width: 8px; height: 8px; background: #10B981; border-radius: 50%; box-shadow: 0 0 8px #10B981; }
+  .status-chip { font-family: var(--font-family-mono); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em; }
+  .status-indicator { width: 8px; height: 8px; border-radius: 50%; }
+  .status-indicator.dev-mode { animation: pulse-warning 2s infinite; }
+
+  @keyframes pulse-warning {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+  }
 
   @media (max-width: 768px) {
     .sr-solution-precision {

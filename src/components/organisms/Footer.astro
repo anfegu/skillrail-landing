@@ -10,6 +10,17 @@ const githubUrl = import.meta.env.PUBLIC_GITHUB_URL || "https://github.com";
 const xUrl = import.meta.env.PUBLIC_X_URL || "#";
 const discordUrl = import.meta.env.PUBLIC_DISCORD_URL || "#";
 const docsPath = import.meta.env.PUBLIC_DOCS_URL || "/docs";
+const sysStatus = import.meta.env.PUBLIC_SYS_STATUS || "OPERATIONAL";
+
+// Status Color Logic
+const statusColors = {
+  OPERATIONAL: "#10B981", // Emerald
+  UNDER_DEVELOPMENT: "#fbfbfb", // White
+  MAINTENANCE: "#F59E0B", // Amber
+  DEGRADED: "#EF4444",    // Red
+};
+
+const currentStatusColor = statusColors[sysStatus as keyof typeof statusColors] || "#94A3B8";
 ---
 
 <footer class="sr-footer-compact">
@@ -35,8 +46,8 @@ const docsPath = import.meta.env.PUBLIC_DOCS_URL || "/docs";
       <!-- Status Indicator -->
       <div class="footer-status">
         <span class="status-label">SYS_STATUS:</span>
-        <span class="status-value">OPERATIONAL</span>
-        <div class="status-pulse"></div>
+        <span class="status-value" style={`color: ${currentStatusColor}`}>{sysStatus}</span>
+        <div class="status-pulse" style={`background: ${currentStatusColor}; box-shadow: 0 0 8px ${currentStatusColor}`}></div>
       </div>
     </div>
   </div>
@@ -133,16 +144,13 @@ const docsPath = import.meta.env.PUBLIC_DOCS_URL || "/docs";
   .status-value {
     font-family: var(--font-family-mono);
     font-size: 0.65rem;
-    color: #10B981;
     font-weight: 700;
   }
 
   .status-pulse {
     width: 6px;
     height: 6px;
-    background: #10B981;
     border-radius: 50%;
-    box-shadow: 0 0 8px #10B981;
     animation: pulse 2s infinite;
   }
 
