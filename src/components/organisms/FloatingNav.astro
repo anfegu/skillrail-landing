@@ -78,21 +78,29 @@ const isHome = Astro.url.pathname === "/";
   });
 
   // Auto-hide header on scroll (Mobile only)
+  let scrollTicking = false;
+
   window.addEventListener('scroll', () => {
-    if (!nav || menu?.classList.contains('active')) return;
-    
-    // Only auto-hide on mobile screens
-    if (window.innerWidth <= 768) {
-      if (window.scrollY > lastScrollY && window.scrollY > 100) {
-        nav.style.transform = 'translateX(-50%) translateY(-150%)';
-      } else {
-        nav.style.transform = 'translateX(-50%) translateY(0)';
-      }
-    } else {
-      // Ensure it's always visible on desktop
-      nav.style.transform = 'translateX(-50%) translateY(0)';
+    if (!scrollTicking) {
+      window.requestAnimationFrame(() => {
+        if (nav && !menu?.classList.contains('active')) {
+          // Only auto-hide on mobile screens
+          if (window.innerWidth <= 768) {
+            if (window.scrollY > lastScrollY && window.scrollY > 100) {
+              (nav as HTMLElement).style.transform = 'translateX(-50%) translateY(-150%)';
+            } else {
+              (nav as HTMLElement).style.transform = 'translateX(-50%) translateY(0)';
+            }
+          } else {
+            // Ensure it's always visible on desktop
+            (nav as HTMLElement).style.transform = 'translateX(-50%) translateY(0)';
+          }
+        }
+        lastScrollY = window.scrollY;
+        scrollTicking = false;
+      });
+      scrollTicking = true;
     }
-    lastScrollY = window.scrollY;
   });
 </script>
 

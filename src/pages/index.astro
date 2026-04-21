@@ -6,7 +6,6 @@ import Solution from "../components/organisms/Solution.astro";
 import HowItWorks from "../components/organisms/HowItWorks.astro";
 import Features from "../components/organisms/Features.astro";
 import CallToAction from "../components/molecules/CallToAction.astro";
-import Footer from "../components/organisms/Footer.astro";
 
 const pageTitle = "SkillRail: Solana-Native Settlement Protocol for Async Work";
 const pageDescription = "SkillRail is a Solana-native protocol for funding, fulfilling, and settling outsourced asynchronous work. It transforms delayed digital work into a programmable transaction flow.";
@@ -18,13 +17,10 @@ const pageKeywords = "Solana, Web3, Smart Contracts, Async Work, Settlement Prot
   description={pageDescription}
   keywords={pageKeywords}
 >
-  <main id="main-content" role="main">
-    <Hero />
-    <Problem />
-    <Solution />
-    <HowItWorks />
-    <Features />
-    <CallToAction />
-  </main>
-  <Footer />
+  <Hero />
+  <Problem />
+  <Solution />
+  <HowItWorks />
+  <Features />
+  <CallToAction />
 </Layout>

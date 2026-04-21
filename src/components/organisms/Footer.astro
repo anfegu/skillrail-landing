@@ -27,10 +27,10 @@ const currentStatusColor = statusColors[sysStatus as keyof typeof statusColors] 
   <div class="container">
     <div class="footer-content">
       <!-- Brand & Copyright -->
-      <div class="footer-brand">
+      <a href="/" class="footer-brand">
         <span class="brand-logo">SR</span>
         <span class="brand-copy">&copy; 2026 SkillRail.</span>
-      </div>
+      </a>
 
       <!-- Navigation -->
       <nav class="footer-nav">
@@ -59,7 +59,7 @@ const currentStatusColor = statusColors[sysStatus as keyof typeof statusColors] 
     bottom: 0;
     background-color: #020617;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 1.25rem 0;
+    padding: 0.75rem 0;
     margin-top: -1px;
     z-index: 1000;
     backdrop-filter: blur(10px);
@@ -80,6 +80,12 @@ const currentStatusColor = statusColors[sysStatus as keyof typeof statusColors] 
     display: flex;
     align-items: center;
     gap: 1rem;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .footer-brand:hover {
+    opacity: 0.8;
   }
 
   .brand-logo {

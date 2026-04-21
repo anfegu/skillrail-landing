@@ -1,6 +1,7 @@
 ---
 import "../styles/main.css";
 import FloatingNav from "../components/organisms/FloatingNav.astro";
+import Footer from "../components/organisms/Footer.astro";
 
 interface Props {
   title: string;
@@ -72,6 +73,8 @@ const defaultOgImage = "/og-image.png"; // You can add this later
     <main id="main-content" class="sr-main-content">
       <slot />
     </main>
+
+    <Footer />
     
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="sr-only sr-only-focusable">

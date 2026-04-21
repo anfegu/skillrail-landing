@@ -216,6 +216,24 @@
   box-sizing: border-box;
 }
 
+/* PERFORMANCE OPTIMIZATION - Fix Choppy Scrolling
+   Apply GPU acceleration to sections and content containers.
+   This avoids applying it to the fixed navigation bar and sticky footer, 
+   preventing potential layout breaks while ensuring smooth scroll performance. */
+.sr-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+section, .card, .sr-hero__bg-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform: translateZ(0); /* Force layer promotion */
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 16px; /* Base font size for rem calculations */

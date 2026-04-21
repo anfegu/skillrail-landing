@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Exploration from "../components/organisms/Exploration.astro";
-import Footer from "../components/organisms/Footer.astro";
 
 const pageTitle = "Protocol Exploration Lab | SkillRail";
 const pageDescription = "Explore the on-chain settlement transitions and cryptographic state of the SkillRail protocol.";
@@ -19,8 +18,6 @@ const pageDescription = "Explore the on-chain settlement transitions and cryptog
     <main class="sr-explore-main">
       <Exploration />
     </main>
-
-    <Footer />
   </div>
 </Layout>
 
@@ -60,10 +57,9 @@ const pageDescription = "Explore the on-chain settlement transitions and cryptog
   .sr-explore-wrapper {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    min-height: 100dvh;
+    min-height: 80vh;
+    min-height: 80dvh;
     background-color: var(--color-bg-secondary);
-    overflow-x: hidden;
   }
 
   .sr-explore-main {
@@ -71,9 +67,10 @@ const pageDescription = "Explore the on-chain settlement transitions and cryptog
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 2rem 0;
   }
 
-  /* Mobile-specific fix to keep Nav and Footer visible during scroll */
+  /* Mobile-specific fix to keep Nav visible during scroll */
   @media (max-width: 768px) {
     .sr-explore-nav {
       position: fixed;
@@ -84,30 +81,15 @@ const pageDescription = "Explore the on-chain settlement transitions and cryptog
       background-color: var(--color-bg-secondary);
     }
 
-    .sr-explore-wrapper :global(.sr-footer-compact) {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 1001;
-    }
-
     .sr-explore-wrapper {
       padding-top: 5rem; /* Nav height approximation */
-      padding-bottom: 5rem; /* Footer height approximation */
+      min-height: 100vh;
+      min-height: 100dvh;
     }
 
     .sr-explore-main {
       justify-content: flex-start; /* Better for scrolling content on mobile */
       padding-top: 1rem;
-    }
-  }
-
-  /* Stabilize footer for desktop as well */
-  @media (min-width: 769px) {
-    .sr-explore-wrapper :global(.sr-footer-compact) {
-      position: relative;
-      margin-top: auto;
     }
   }
 </style>
