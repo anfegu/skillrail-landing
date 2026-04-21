@@ -9,6 +9,18 @@
  * - Interactive hover states with status indicators
  */
 
+const solutionStatus = import.meta.env.PUBLIC_SOLUTION_STATUS || "DEVELOPMENT_ACTIVE";
+
+// Status Color Logic
+const solutionStatusColors = {
+  PHASE_01_INITIALIZATION: "#6366F1",   // Indigo - Systematic Setup
+  DEVELOPMENT_ACTIVE: "#94A3B8",        // Slate - Foundational Building
+  PHASE_02_VALIDATION: "#F59E0B",       // Amber - Testing/Verification
+  SETTLEMENT_READY: "#10B981",          // Emerald - Completed/Finality
+};
+
+const currentSolutionColor = solutionStatusColors[solutionStatus as keyof typeof solutionStatusColors] || "#94A3B8";
+
 const steps = [
   { 
     number: "01", 
@@ -90,8 +102,8 @@ const steps = [
               </div>
               
               <div class="step-status">
-                <div class="status-dot"></div>
-                <span>Protocol Ready</span>
+                <div class="status-dot" style={`background: ${currentSolutionColor}; box-shadow: 0 0 8px ${currentSolutionColor}`}></div>
+                <span style={`color: ${currentSolutionColor}`}>{solutionStatus.replace('_', ' ')}</span>
               </div>
             </div>
           </div>
@@ -357,7 +369,6 @@ const steps = [
     gap: 0.5rem;
     font-family: var(--font-family-mono);
     font-size: 0.6rem;
-    color: #10B981;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -366,7 +377,6 @@ const steps = [
   .status-dot {
     width: 4px;
     height: 4px;
-    background: #10B981;
     border-radius: 50%;
     animation: blink 1s infinite;
   }
