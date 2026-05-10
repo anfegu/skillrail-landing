@@ -10,12 +10,12 @@
   --color-navy-light: #1E293B;
   --color-navy-lighter: #334155;
   
-  /* Accent: Indigo - Protocol Logic, Smart Contracts, Determinism */
-  --color-indigo: #6366F1;
-  --color-indigo-dark: #4F46E5;
-  --color-indigo-darker: #3730A3;
-  --color-indigo-light: #818CF8;
-  --color-indigo-lighter: #A5B4FC;
+  /* Accent: Flat Professional Purple - Harmonized with Golden Yellow logo (No Gradients) */
+  --color-indigo: #5B21B6; /* Violet 800 */
+  --color-indigo-dark: #4C1D95; /* Violet 900 */
+  --color-indigo-darker: #2E1065;
+  --color-indigo-light: #7C3AED; /* Violet 600 */
+  --color-indigo-lighter: #A78BFA;
   
   /* Secondary: Emerald - Settlement, Success, Finality */
   --color-emerald: #10B981;
@@ -71,9 +71,9 @@
   --color-surface-overlay: rgba(15, 23, 42, 0.8);
   
   /* Legacy colors for backward compatibility */
-  --primary: #6366F1;
+  --primary: #6B21A8;
   --secondary: #10B981;
-  --accent: #6366F1;
+  --accent: #6B21A8;
   --dark-bg: #FFFFFF;
   --dark-card: #F8FAFC;
   --dark-border: #E2E8F0;
@@ -168,10 +168,10 @@
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
   
-  /* Indigo-tinted shadows (for interactive elements) */
-  --shadow-indigo-sm: 0 4px 12px rgba(99, 102, 241, 0.15);
-  --shadow-indigo-md: 0 10px 30px rgba(99, 102, 241, 0.2);
-  --shadow-indigo-lg: 0 20px 40px rgba(99, 102, 241, 0.25);
+  /* Darker Purple shadows (for flat design depth) */
+  --shadow-indigo-sm: 0 4px 12px rgba(91, 33, 182, 0.2);
+  --shadow-indigo-md: 0 10px 30px rgba(91, 33, 182, 0.25);
+  --shadow-indigo-lg: 0 20px 40px rgba(91, 33, 182, 0.3);
   
   /* ============================================
      BORDER RADIUS - Subtle, Professional
@@ -545,9 +545,11 @@ a:focus-visible {
   transform: none !important;
 }
 
-/* Primary Button */
+/* Primary Button - Flat Design (No Gradients) */
 .btn--primary {
   background-color: var(--color-indigo);
+  background-image: none !important; 
+  background: var(--color-indigo) !important;
   color: white;
   box-shadow: var(--shadow-indigo-sm);
 }

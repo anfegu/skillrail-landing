@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import logoImage from "../../assets/logo.png";
+
 /**
  * Floating Navigation - Glassmorphic & Technical
  * Only shown on the home page.
@@ -10,8 +13,7 @@ const isHome = Astro.url.pathname === "/";
   <nav class="sr-nav">
     <div class="container sr-nav__container">
       <a href="/" class="sr-nav__logo">
-        <span class="logo-symbol">SR</span>
-        <span class="logo-text">SkillRail</span>
+        <Image src={logoImage} alt="SkillRail Logo" class="logo-image" width={140} quality="max" />
       </a>
 
       {/* Desktop Menu */}
@@ -141,13 +143,8 @@ const isHome = Astro.url.pathname === "/";
     .sr-nav__container {
       padding: 0.4rem 1rem;
     }
-    .logo-symbol {
-      width: 24px;
+    .logo-image {
       height: 24px;
-      font-size: 0.6rem;
-    }
-    .logo-text {
-      font-size: 0.9rem;
     }
   }
 
@@ -158,25 +155,18 @@ const isHome = Astro.url.pathname === "/";
     text-decoration: none;
   }
 
-  .logo-symbol {
-    width: 32px;
+  .logo-image {
     height: 32px;
-    background: linear-gradient(135deg, var(--color-indigo), var(--color-emerald));
-    color: white;
-    font-weight: 900;
-    font-size: 0.75rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    font-family: var(--font-family-mono);
+    width: auto;
+    display: block;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 6px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)) brightness(1.1);
   }
 
-  .logo-text {
-    color: white;
-    font-weight: 800;
-    font-size: 1.125rem;
-    letter-spacing: -0.01em;
+  .sr-nav__logo:hover .logo-image {
+    transform: scale(1.05) translateY(-1px);
+    filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.5)) brightness(1.2);
   }
 
   .sr-nav__desktop {
@@ -209,7 +199,7 @@ const isHome = Astro.url.pathname === "/";
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: linear-gradient(135deg, var(--color-indigo), #4f46e5);
+    background-color: var(--color-indigo);
     color: white;
     text-decoration: none;
     padding: 0.6rem 1.25rem;
@@ -217,7 +207,7 @@ const isHome = Astro.url.pathname === "/";
     font-size: 0.875rem;
     font-weight: 700;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+    box-shadow: var(--shadow-indigo-sm);
     margin-left: 0.5rem;
   }
 
